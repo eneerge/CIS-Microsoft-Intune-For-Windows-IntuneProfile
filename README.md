@@ -24,7 +24,7 @@ To import a profile:
 1. Download this Powershell Script: https://github.com/eneerge/Azure-Intune-Export-DeviceConfiguration-Decrypts/blob/main/DeviceConfiguration_Import_FromJSON.ps1
 2. Download the JSON configuration file in this repository
 3. Run the powershell script
-4. Enter the location to the JSON file wheb prompted
+4. Enter the location to the JSON file when prompted
 
 # Importing requirements
 You need the AzureAD powershell module. Run this from an administrative powershell console:
