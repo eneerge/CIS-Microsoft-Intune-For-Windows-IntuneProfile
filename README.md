@@ -9,7 +9,7 @@ Some CIS configurations have been "opposed". When a configuration has been oppos
 The profiles are all configured using OMA-URI. There are a few reasons for this approach:
 - Each configuration can be named according the section and name provided by CIS. EG: 1.1.1 <Name>
 - It is clear what CIS option a particular configuration is addressing
-- When CIS recommendation configurations change, it will be easy to make changes to align with the new recommendation
+- When CIS recommendations change, it will be easy to make changes to align with the new recommendation
 - OMA-URIs allow for a "description". This description can be used to note configurations that differ from CIS and provide a reason for the difference. If you use Risk Acceptance Forms (RAF) in your environment, you can also note a RAF # to address the difference.
  
 
