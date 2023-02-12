@@ -26,7 +26,7 @@ You need the AzureAD powershell module. Run this from an administrative powershe
 `Install-Module AzureAD`
 
 # Known Issues
-- Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: <!cdata[]]>). Configurations that specify a blank may report remediation failure.
+- Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: `<![CDATA[]]>`). Configurations that specify a blank may report remediation failure.
 
 To verify a configuration applied:
 - Open Event Viewer
