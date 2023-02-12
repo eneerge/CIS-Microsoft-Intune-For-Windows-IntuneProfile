@@ -1,7 +1,7 @@
 # CIS-Microsoft-Intune-For-Windows-IntuneProfile
 This repository houses prebuilt Microsoft Intune configuration profiles that can be imported into Microsoft Endpoint Manager (MDM) including CIS benchmarks.
 
-At the moment, all portions of the CIS Intune benchmark (L1,L2,BL) are being implemented into a single configuration profile. Once all portions have been implemented, I plan to separate them.
+At the moment, all portions of the CIS Intune benchmark (L1,L2,BL,NG) are being implemented into a single configuration profile. Once all portions have been implemented, I plan to separate them.
 
 Some CIS configurations have been "opposed". When a configuration has been opposed, the configuration strays away from the CIS recommended option. The OMA-URI description species any configurations that have been opposed and provides a reason for the setting.
 
