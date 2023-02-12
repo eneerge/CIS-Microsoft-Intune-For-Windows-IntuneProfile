@@ -20,8 +20,11 @@ Some configuration options were found by finding corresponding ADMX Group Policy
 If you need to implement your own configurations, open the admx file (located at C:\windows\policydefintions) and locate the policy and the corresponding element you want to configure and follow the <enabled/><data id="config_id" values="value_you_want"/> syntax.
 
 # Importing
-To import a profile, use this Powershell Script: https://github.com/eneerge/Azure-Intune-Export-DeviceConfiguration-Decrypts/blob/main/DeviceConfiguration_Import_FromJSON.ps1
-The above script supports unicode which is required to import the profile correctly. The ones provided by Microsoft do not support unicode, but unicode is required in order to configure some policies.
+To import a profile:
+1. Download this Powershell Script: https://github.com/eneerge/Azure-Intune-Export-DeviceConfiguration-Decrypts/blob/main/DeviceConfiguration_Import_FromJSON.ps1
+2. Download the JSON configuration file in this repository
+3. Run the powershell script
+4. Enter the location to the JSON file wheb prompted
 
 # Importing requirements
 You need the AzureAD powershell module. Run this from an administrative powershell console:
