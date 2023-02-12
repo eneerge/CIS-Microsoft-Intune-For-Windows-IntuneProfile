@@ -1,4 +1,4 @@
-![alt text](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/raw/main/screenshots/intune.png?raw=true)
+![alt text](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/raw/main/screenshots/intuness.png?raw=true)
 
 # CIS-Microsoft-Intune-For-Windows-IntuneProfile
 This repository houses prebuilt Microsoft Intune configuration profiles in JSON format that can be imported into Microsoft Endpoint Manager (MDM).
