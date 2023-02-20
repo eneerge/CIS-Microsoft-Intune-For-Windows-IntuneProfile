@@ -45,4 +45,4 @@ To verify a configuration applied:
 Firefox can be a pain to work with OMA-URIs. I created a stylesheet to make it a lot easier and that can be seen in the screenshot above. To install, go into the "Extras" folder for instructions.
 
 # Status
-Profile currently goes up to 18.9.11.1.1, but will soon cover the entire CIS Intune benchmark.
+All settings of CIS Intune benchmark implemented with the exception of Bitlocker. A seperate bitlocker configuration will be created.
