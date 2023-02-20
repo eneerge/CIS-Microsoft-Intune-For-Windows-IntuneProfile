@@ -31,11 +31,10 @@ You need the AzureAD powershell module. Run this from an administrative powershe
 `Install-Module AzureAD`
 
 # Known Issues
-- Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: `<![CDATA[]]>`). Configurations that specify a blank may report remediation failure.
+- Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: `<![CDATA[]]>`). Configurations that specify a blank may report remediation failure. These may be refactored into a separate profile that does not use OMA-URI to prevent these "errors".
 
 To verify a configuration applied:
 - Open Event Viewer
-- Click View->Show Analytic and Debug Logs
 - Open the log "Application and Services Logs"\Microsoft\Windows\DeviceManagement-Enterprise-Diagnostics-Provider\Admin
 - Review any entries with "Error"
   - Ignore event id 2545 (checkNewInstanceData) - this appears to be an Intune bug. See https://answers.microsoft.com/en-us/windows/forum/all/event-2545-microsoft-windows-devicemanagement/a7e0f8e9-685f-44d8-be69-58fd1f8a716e
