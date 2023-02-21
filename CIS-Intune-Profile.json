@@ -43,7 +43,7 @@
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
                             "displayName":  "1.1.4 (L1) Ensure \u0027Minimum password length\u0027 is set to \u002714 or more characters\u0027",
-                            "description":  "Opposed - Set to 6. Allow PINs of 6+ characters for Hello for Business.",
+                            "description":  "Opposed - Set to 6, UMF will allow PINs of 6+ characters. Users do not use passwords.",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MinDevicePasswordLength",
                             "secretReferenceValueId":  null,
                             "isEncrypted":  false,
@@ -53,7 +53,7 @@
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
                             "displayName":  "1.1.5 (L1) Ensure \u0027Password must meet complexity requirements\u0027 is set to \u0027Numbers, lowercase, uppercase and special characters required\u0027",
-                            "description":  "Opposed - Set to 1 (digits only). Minimum for Windows Hello is numerical which is set here.",
+                            "description":  "Opposed - Set to 1 (digits only). UMF Will allow PINS that are numerical or alphanumerical. Minimum is numerical which is set here.",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MinDevicePasswordComplexCharacters",
                             "secretReferenceValueId":  null,
                             "isEncrypted":  false,
@@ -294,7 +294,7 @@
                             "displayName":  "2.3.1.5 (L1) Configure \u0027Accounts: Rename administrator account\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/Accounts_RenameAdministratorAccount",
-                            "value":  "DisabledUser"
+                            "value":  "umfadmin"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -1972,21 +1972,18 @@
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
                             "displayName":  "18.9.47.4.3.1 (L1) Ensure \u0027Prevent users and apps from accessing dangerous websites\u0027 is set to \u0027Enabled: Block\u0027",
                             "description":  "Implemented",
-                            "omaUri":  "./Device/Vendor/MSFT/Defender/Configuration/AllowNetworkProtectionDownLevel",
+                            "omaUri":  "./Device/Vendor/MSFT/Policy/Config/Defender/EnableNetworkProtection",
                             "secretReferenceValueId":  null,
                             "isEncrypted":  false,
                             "value":  1,
                             "isReadOnly":  false
                         },
                         {
-                            "@odata.type":  "#microsoft.graph.omaSettingInteger",
+                            "@odata.type":  "#microsoft.graph.omaSettingString",
                             "displayName":  "18.9.47.5.1 (L2) Ensure \u0027Enable file hash computation feature\u0027 is set to \u0027Enabled\u0027",
                             "description":  "Implemented",
-                            "omaUri":  "./Device/Vendor/MSFT/Defender/Configuration/EnableFileHashComputation",
-                            "secretReferenceValueId":  null,
-                            "isEncrypted":  false,
-                            "value":  1,
-                            "isReadOnly":  false
+                            "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/MpEngine_EnableFileHashComputation",
+                            "value":  "\u003cenabled/\u003e"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -2244,7 +2241,7 @@
                             "displayName":  "18.9.75.4 (L2) Ensure \u0027Turn off the Store application\u0027 is set to \u0027Enabled\u0027",
                             "description":  "Opposed. Store will be available. Using store is better than using downloaded apps.",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ADMX_WindowsStore/RemoveWindowsStore_2",
-                            "value":  "\u003cdisbaled/\u003e"
+                            "value":  "\u003cdisabled/\u003e"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
@@ -2338,7 +2335,7 @@
                             "displayName":  "18.9.100.1 (L1) Ensure \u0027Turn on PowerShell Script Block Logging\u0027 is set to \u0027Enabled\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/WindowsPowerShell/TurnOnPowerShellScriptBlockLogging",
-                            "value":  "\u003cenabled/\u003e"
+                            "value":  "\u003cenabled/\u003e\n\u003cdata id=\"EnableScriptBlockInvocationLogging\" value=\"true\"/\u003e"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -2417,7 +2414,7 @@
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
                             "displayName":  "18.9.108.2.1 (L1) Ensure \u0027Configure Automatic Updates\u0027 is set to \u0027Enabled\u0027",
                             "description":  "Implemented. 1 Auto install and notify to restart.",
-                            "omaUri":  "./Device/Vendor/MSFT/Policy/Config/Update/AllowAutoUpdat",
+                            "omaUri":  "./Device/Vendor/MSFT/Policy/Config/Update/AllowAutoUpdate",
                             "secretReferenceValueId":  null,
                             "isEncrypted":  false,
                             "value":  1,
