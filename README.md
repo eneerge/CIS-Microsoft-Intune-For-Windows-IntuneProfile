@@ -5,7 +5,7 @@ This repository houses prebuilt Microsoft Intune configuration profiles in JSON 
 
 At the moment, all portions of the CIS Intune benchmark (L1,L2,BL,NG) are being implemented into a single configuration profile. Once all portions have been implemented, I plan to separate them.
 
-Some CIS configurations have been "opposed". When a configuration has been opposed, the configuration strays away from the CIS recommended option. The OMA-URI description species any configurations that have been opposed and provides a reason for the setting.
+Some CIS configurations have been "opposed". When a configuration has been opposed, the configuration strays away from the CIS recommended option. The OMA-URI description specifies any configurations that have been opposed and provides a reason for the setting. You can follow a similar strategy in your environment if you require changes.
 
 # Implemented using OMA-URI
 The profiles are all configured using OMA-URI. There are a few reasons for this approach:
