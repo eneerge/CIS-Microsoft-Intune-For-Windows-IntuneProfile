@@ -1,7 +1,7 @@
 ![alt text](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/raw/main/screenshots/intuness.png?raw=true)
 
 # CIS-Microsoft-Intune-For-Windows-IntuneProfile
-This repository houses prebuilt Microsoft Intune configuration profiles in JSON format that can be imported into Microsoft Endpoint Manager (MDM). Benchmark: https://workbench.cisecurity.org/benchmarks/10095
+This repository houses prebuilt Microsoft Intune configuration profiles in JSON format that can be imported into Microsoft Endpoint Manager (MDM). Benchmark:  https://workbench.cisecurity.org/community/2/tickets/16339 (v2.0.0)
 
 At the moment, all portions of the CIS Intune benchmark (L1,L2,BL,NG) are being implemented into a single configuration profile. Once all portions have been implemented, I plan to separate them.
 
