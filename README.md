@@ -43,17 +43,17 @@ Here is the results of an audit of a workstation after running Hardening Kitty A
 
 | CIS Section | CIS Description | Result | Notes |
 | :---------- | :-------------- | :----- | :---- |
-| 1.1.1 | Length of password history maintained | Low | Result=None,Recommended=24
+| 1.1.1 | Length of password history maintained | Passed (False Positive: Low) | Result=None,Recommended=24. The registry value documented by CIS is set successfully. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\Providers\{GUID}\Default\Device\DeviceLock:DevicePasswordHistory is set to 24. (https://workbench.cisecurity.org/sections/2101248/recommendations/3353873)
 | 1.1.2 | Maximum password age | Passed | Result=42,Recommended=365
 | 1.1.3 | Minimum password age | Passed | Result=1,Recommended=1
 | 1.1.4 | Minimum password length | Medium | Result=0,Recommended=14
 | 1.1.5 | Password must meet complexity requirements | Medium | Result=0,Recommended=1
 | 1.1.6 | Relax minimum password length limits | Medium | Result=0,Recommended=1
 | 1.1.7 | Store passwords using reversible encryption | Passed | Result=0,Recommended=0
-| 1.2.1 | Account lockout duration | Low | Result=10,Recommended=15
-| 1.2.2 | Account lockout threshold | Low | Result=10,Recommended=5
-| 1.2.3 | Allow Administrator account lockout | Passed | Result=1,Recommended=1
-| 1.2.4 | Reset account lockout counter | Low | Result=10,Recommended=15
+| 1.2.1 | Account lockout duration | Passed (False Positive: Low) | Result=10,Recommended=15. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101247)
+| 1.2.2 | Account lockout threshold | Passed (False Positive: Low) | Result=10,Recommended=5. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101247)
+| 1.2.3 | Allow Administrator account lockout | Passed (False Positive: Low) | Result=1,Recommended=1. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101247)
+| 1.2.4 | Reset account lockout counter | Passed (False Positive: Low) | Result=10,Recommended=15. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101247)
 | 2.2.1 | Access Credential Manager as a trusted caller | Passed | Result=,Recommended=
 | 2.2.2 | Access this computer from the network | Passed | Result=BUILTIN\Administrators;BUILTIN\Remote Desktop Users,Recommended=BUILTIN\Remote Desktop Users;BUILTIN\Administrators
 | 2.2.3 | Act as part of the operating system | Passed | Result=,Recommended=
@@ -110,16 +110,16 @@ Here is the results of an audit of a workstation after running Hardening Kitty A
 | 2.3.6.4 | Domain member: Disable machine account password changes | Passed | Result=0,Recommended=0
 | 2.3.6.5 | Domain member: Maximum machine account password age | Passed | Result=30,Recommended=30
 | 2.3.6.6 | Domain member: Require strong (Windows 2000 or later) session key | Passed | Result=1,Recommended=1
-| 2.3.7.1 | Interactive logon: Do not require CTRL+ALT+DEL | Low | Result=1,Recommended=0
-| 2.3.7.2 | Interactive logon: Don't display last signed-in | Low | Result=0,Recommended=1
+| 2.3.7.1 | Interactive logon: Do not require CTRL+ALT+DEL | Low | Result=1,Recommended=0. Opposed: I will not require users to ctrl+alt+del before logging in. Outdated concept in my opinion.
+| 2.3.7.2 | Interactive logon: Don't display last signed-in | Low | Result=0,Recommended=1. Opposed: I don't want users to enter username every login.
 | 2.3.7.3 | Interactive logon: Machine account lockout threshold | Passed | Result=10,Recommended=10
 | 2.3.7.4 | Interactive logon: Machine inactivity limit | Passed | Result=900,Recommended=900
-| 2.3.7.5 | Interactive logon: Message text for users attempting to log on | Low | Result=,Recommended=Not 
-| 2.3.7.6 | Interactive logon: Message title for users attempting to log on | Low | Result=,Recommended=Not 
+| 2.3.7.5 | Interactive logon: Message text for users attempting to log on | Low | Result=,Recommended=Not. Opposed. No message has been set.
+| 2.3.7.6 | Interactive logon: Message title for users attempting to log on | Low | Result=,Recommended=Not. Opposed. No message title has been set.
 | 2.3.7.7 | Interactive logon: Number of previous logons to cache (in case domain controller is not available) | Medium | Result=10,Recommended=4
 | 2.3.7.8.1 | Interactive logon: Prompt user to change password before expiration (Max) | Passed | Result=5,Recommended=14
 | 2.3.7.8.2 | Interactive logon: Prompt user to change password before expiration (Min) | Passed | Result=5,Recommended=5
-| 2.3.7.9 | Interactive logon: Smart card removal behavior | Low | Result=3,Recommended=1
+| 2.3.7.9 | Interactive logon: Smart card removal behavior | Low | Result=3,Recommended=1. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101350)
 | 2.3.8.1 | Microsoft network client: Digitally sign communications (always) | Passed | Result=1,Recommended=1
 | 2.3.8.2 | Microsoft network client: Digitally sign communications (if server agrees) | Passed | Result=1,Recommended=1
 | 2.3.8.3 | Microsoft network client: Send unencrypted password to third-party SMB servers | Passed | Result=0,Recommended=0
@@ -145,7 +145,7 @@ Here is the results of an audit of a workstation after running Hardening Kitty A
 | 2.3.11.3 | Network security: Allow PKU2U authentication requests to this computer to use online identities | Passed | Result=0,Recommended=0
 | 2.3.11.4 | Network security: Configure encryption types allowed for Kerberos | Medium | Result=2147483644,Recommended=2147483640
 | 2.3.11.5 | Network security: Do not store LAN Manager hash value on next password change | Passed | Result=1,Recommended=1
-| 2.3.11.6 | Network security: Force logoff when logon hours expires | Low | Result=0,Recommended=1
+| 2.3.11.6 | Network security: Force logoff when logon hours expires | Passed (False Positive: Low) | Result=0,Recommended=1. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101374)
 | 2.3.11.7 | Network security: LAN Manager authentication level | Passed | Result=5,Recommended=5
 | 2.3.11.8 | Network security: LDAP client signing requirements | Passed | Result=1,Recommended=1
 | 2.3.11.9 | Network security: Minimum session security for NTLM SSP based (including secure RPC) clients | Passed | Result=537395200,Recommended=537395200
@@ -254,29 +254,29 @@ Here is the results of an audit of a workstation after running Hardening Kitty A
 | 9.1.1 | EnableFirewall (Domain Profile, Policy) | Medium | Result=0,Recommended=1
 | 9.1.2 | Inbound Connections (Domain Profile, Policy) | Passed | Result=1,Recommended=1
 | 9.1.3 | Outbound Connections (Domain Profile, Policy) | Passed | Result=0,Recommended=0
-| 9.1.4 | Display a notification (Domain Profile, Policy) | Low | Result=0,Recommended=1
-| 9.1.5 | Name of log file (Domain Profile, Policy) | Low | Result=%SystemRoot%\System32\logfiles\firewall\pfirewall.log,Recommended=%SystemRoot%\System32\logfiles\firewall\domainfw.log
+| 9.1.4 | Display a notification (Domain Profile, Policy) | Passed (False Positive: Low) | Result=0,Recommended=1. The registry value documented by CIS is set successfully. HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\Mdm\DomainProfile:DisableNotifications is set to 1. (https://workbench.cisecurity.org/sections/2101259/recommendations/3353899)
+| 9.1.5 | Name of log file (Domain Profile, Policy) | Passed (False Positive: Low) | Result=%SystemRoot%\System32\logfiles\firewall\pfirewall.log,Recommended=%SystemRoot%\System32\logfiles\firewall\domainfw.log. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101259)
 | 9.1.6 | Log size limit (Domain Profile, Policy) | Medium | Result=4096,Recommended=16384
 | 9.1.7 | Log dropped packets (Domain Profile, Policy) | Medium | Result=0,Recommended=1
-| 9.1.8 | Log successful connections (Domain Profile, Policy) | Low | Result=0,Recommended=1
+| 9.1.8 | Log successful connections (Domain Profile, Policy) | Passed (False Positive: Low) | Result=0,Recommended=1. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101259)
 | 9.2.1 | EnableFirewall (Private Profile, Policy) | Medium | Result=0,Recommended=1
 | 9.2.2 | Inbound Connections (Private Profile, Policy) | Passed | Result=1,Recommended=1
 | 9.2.3 | Outbound Connections (Private Profile, Policy) | Passed | Result=0,Recommended=0
-| 9.2.4 | Display a notification (Private Profile, Policy) | Low | Result=0,Recommended=1
-| 9.2.5 | Name of log file (Private Profile, Policy) | Low | Result=%SystemRoot%\System32\logfiles\firewall\pfirewall.log,Recommended=%SystemRoot%\System32\logfiles\firewall\privatefw.log
+| 9.2.4 | Display a notification (Private Profile, Policy) | Passed (False Positive: Low) | Result=0,Recommended=1. The registry value documented by CIS is set successfully. HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\Mdm\PublicProfile:DisableNotifications is set to 1. (https://workbench.cisecurity.org/sections/2101270/recommendations/3353909)
+| 9.2.5 | Name of log file (Private Profile, Policy) | Passed (False Positive: Low) | Result=%SystemRoot%\System32\logfiles\firewall\pfirewall.log,Recommended=%SystemRoot%\System32\logfiles\firewall\privatefw.log. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101270)
 | 9.2.6 | Log size limit (Private Profile, Policy) | Medium | Result=4096,Recommended=16384
 | 9.2.7 | Log dropped packets (Private Profile, Policy) | Medium | Result=0,Recommended=1
-| 9.2.8 | Log successful connections (Private Profile, Policy) | Low | Result=0,Recommended=1
+| 9.2.8 | Log successful connections (Private Profile, Policy) | Passed (False Positive: Low) | Result=0,Recommended=1. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101270)
 | 9.3.1 | EnableFirewall (Public Profile, Policy) | Medium | Result=0,Recommended=1
 | 9.3.2 | Inbound Connections (Public Profile, Policy) | Passed | Result=1,Recommended=1
 | 9.3.3 | Outbound Connections (Public Profile, Policy) | Passed | Result=0,Recommended=0
-| 9.3.4 | Display a notification (Public Profile, Policy) | Low | Result=0,Recommended=1
+| 9.3.4 | Display a notification (Public Profile, Policy) | Passed (False Positive: Low) | Result=0,Recommended=1. The registry value documented by CIS is set successfully. HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\Mdm\StandardProfile:DisableNotifications is set to 1. (https://workbench.cisecurity.org/sections/2101272/recommendations/3353919)
 | 9.3.5 | Apply local firewall rules (Public Profile, Policy) | Passed | Result=0,Recommended=0
 | 9.3.6 | Apply local connection security rules (Public Profile, Policy) | Passed | Result=0,Recommended=0
-| 9.3.7 | Name of log file (Public Profile, Policy) | Low | Result=%SystemRoot%\System32\logfiles\firewall\pfirewall.log,Recommended=%SystemRoot%\System32\logfiles\firewall\publicfw.log
+| 9.3.7 | Name of log file (Public Profile, Policy) | Passed (False Positive: Low) | Result=%SystemRoot%\System32\logfiles\firewall\pfirewall.log,Recommended=%SystemRoot%\System32\logfiles\firewall\publicfw.log. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101272)
 | 9.3.8 | Log size limit (Public Profile, Policy) | Medium | Result=4096,Recommended=16384
 | 9.3.9 | Log dropped packets (Public Profile, Policy) | Medium | Result=0,Recommended=1
-| 9.3.10 | Log successful connections (Public Profile, Policy) | Low | Result=0,Recommended=1
+| 9.3.10 | Log successful connections (Public Profile, Policy) | Passed (False Positive: Low) | Result=0,Recommended=1. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101272)
 | 17.1.1 | Credential Validation | Passed | Result=Success and Failure,Recommended=Success and Failure
 | 17.2.1 | Application Group Management | Passed | Result=Success and Failure,Recommended=Success and Failure
 | 17.2.2 | Security Group Management | Passed | Result=Success,Recommended=Success
@@ -645,11 +645,10 @@ Here is the results of an audit of a workstation after running Hardening Kitty A
 | 18.10.93.4.1.1 | Windows Update: Manage updates offered from Windows Update: Manage preview builds (ManagePreviewBuilds) | Medium | Result=,Recommended=1
 | 18.10.93.4.1.2 | Windows Update: Manage updates offered from Windows Update: Manage preview builds (ManagePreviewBuildsPolicyValue) | Medium | Result=,Recommended=0
 | 18.10.93.4.2.1 | Windows Update: Manage updates offered from Windows Update: Select when Preview Builds and Feature Updates are received (DeferFeatureUpdates) | Medium | Result=,Recommended=1
-| 18.10.93.4.2.2 | Windows Update: Manage updates offered from Windows Update: Select when Preview Builds and Feature Updates are received (BranchReadinessLevel) | Low | Result=,Recommended=2
+| 18.10.93.4.2.2 | Windows Update: Manage updates offered from Windows Update: Select when Preview Builds and Feature Updates are received (BranchReadinessLevel) | Passed (False Positive: Low) | Result=,Recommended=2. This policy is not in the Intune benchmark. (see https://workbench.cisecurity.org/benchmarks/14355/sections/2101622)
 | 18.10.93.4.2.3 | Windows Update: Manage updates offered from Windows Update: Select when Preview Builds and Feature Updates are received (DeferFeatureUpdatesPeriodInDays) | Medium | Result=,Recommended=180
 | 18.10.93.4.3.1 | Windows Update: Manage updates offered from Windows Update: Select when Quality Updates are received (DeferQualityUpdates) | Medium | Result=,Recommended=1
 | 18.10.93.4.3.2 | Windows Update: Manage updates offered from Windows Update: Select when Quality Updates are received (DeferQualityUpdatesPeriodInDays) | Medium | Result=,Recommended=0
-
 
 # Extras
 Firefox can be a pain to work with OMA-URIs. I created a stylesheet to make it a lot easier and that can be seen in the screenshot above. To install, go into the "Extras" folder for instructions.
