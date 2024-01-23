@@ -1730,13 +1730,13 @@
                             "isReadOnly":  false
                         },
                         {
-                            "@odata.type":  "#microsoft.graph.omaSettingInteger",
+                            "@odata.type":  "#microsoft.graph.omaSettingString",
                             "displayName":  "18.10.4.1 (L1) Ensure \u0027Let Windows apps activate with voice while the system is locked\u0027 is set to \u0027Disabled\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/Privacy/LetAppsActivateWithVoiceAboveLock",
                             "secretReferenceValueId":  null,
                             "isEncrypted":  false,
-                            "value":  2,
+                            "value":  "\u003cenabled/\u003e\n\u003cdata id=\"LetAppsActivateWithVoiceAboveLock\" value=\"2\"/\u003e",
                             "isReadOnly":  false
                         },
                         {
@@ -1943,23 +1943,23 @@
                             "value":  "\u003cdisabled/\u003e"
                         },
                 {
-                    "@odata.type":  "#microsoft.graph.omaSettingInteger",
+                    "@odata.type":  "#microsoft.graph.omaSettingString",
                     "displayName":  "18.10.33 (L1) Ensure \u0027Prevent the computer from joining a homegroup\u0027 is set to 'Enabled'",
                     "description":  "Implemented",
                     "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ADMX_Sharing/DisableHomeGroup",
                     "secretReferenceValueId":  null,
                     "isEncrypted":  false,
-                    "value":  1,
+                    "value":  "\u003cenabled/\u003e",
                     "isReadOnly":  false
                 },
                 {
-                    "@odata.type":  "#microsoft.graph.omaSettingInteger",
+                    "@odata.type":  "#microsoft.graph.omaSettingString",
                     "displayName":  "18.10.35.1 (L1) \u0027Disable Internet Explorer 11 as a standalone browser\u0027 is set to \u0027Enabled: Always\u0027",
                     "description":  "Implemented",
                     "omaUri":  "./Device/Vendor/MSFT/Policy/Config/InternetExplorer/DisableInternetExplorerApp",
                     "secretReferenceValueId":  null,
                     "isEncrypted":  false,
-                    "value":  1,
+                    "value":  "\u003cenabled/\u003e\n\u003cdata id=\"NotifyDisableIEOptions\" value=\"1\"/\u003e",
                     "isReadOnly":  false
                 },
                         {
@@ -2221,6 +2221,16 @@
                             "value":  0,
                             "isReadOnly":  false
                         },
+                {
+                    "@odata.type":  "#microsoft.graph.omaSettingInteger",
+                    "displayName":  "18.10.60.x (L1) Ensure \u0027Dont search the web or display web results in Search\u0027 is set to \u0027Enabled\u0027",
+                    "description":  "Implemented. Not in v2.0.0, but it should be.",
+                    "omaUri":  "./Device/Vendor/MSFT/Policy/Config/Search/DoNotUseWebResults",
+                    "secretReferenceValueId":  null,
+                    "isEncrypted":  false,
+                    "value":  0,
+                    "isReadOnly":  false
+                },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
                             "displayName":  "18.10.60.5 (L1) Ensure \u0027Allow indexing of encrypted files\u0027 is set to \u0027Disabled\u0027",
@@ -2272,11 +2282,14 @@
                             "isReadOnly":  false
                         },
                 {
-                    "@odata.type":  "#microsoft.graph.omaSettingString",
+                    "@odata.type":  "#microsoft.graph.omaSettingInteger",
                     "displayName":  "18.10.67.3 (L1) Ensure \u0027Turn off Automatic Download and Install of updates\u0027 is set to \u0027Disabled\u0027",
                     "description":  "Implemented",
                     "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/AllowAppStoreAutoUpdate",
-                    "value":  "\u003cdisabled/\u003e"
+                    "secretReferenceValueId":  null,
+                    "isEncrypted":  false,
+                    "value":  0,
+                    "isReadOnly":  false
                 },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -2391,7 +2404,7 @@
                             "displayName":  "18.10.88.2 (L1) Ensure \u0027Turn on PowerShell Transcription\u0027 is set to \u0027Enabled\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ADMX_PowerShellExecutionPolicy/EnableTranscripting",
-                            "value":  "\u003cenabled/\u003e"
+                            "value":  "\u003cenabled/\u003e\u003cdata id=\"OutputDirectory\" value=\"\"/\u003e\n\u003cdata id=\"EnableInvocationHeader\" value=\"false\"/\u003e"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
