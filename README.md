@@ -39,7 +39,9 @@ To verify a configuration applied:
   - Ignore error referencing "./Device/Vendor/MSFT/Policy/ConfigOpoerations/ADMXInstall/Receiver/Properties/Policy/FakePolicy/Version. This is an expected error the informs you that Intune is working properly. See: https://www.reddit.com/r/Intune/comments/n8u51x/intune_fakepolicy_not_found_error/
 
 # Audit
-Here is the results of an audit of a workstation after running Hardening Kitty Audit procedure (https://github.com/scipag/HardeningKitty) against the Windows 10 Enterprise benchmark. NOTE: The Win10 Enterprise benchmark contains some settings that are not included in the CIS Intune benchmark.
+Here is the results of an audit of a workstation after running Hardening Kitty Audit (https://github.com/scipag/HardeningKitty) against the **Windows 10 Enterprise benchmark**. 
+
+NOTE: The Windows 10 Enterprise benchmark audit below contains some settings that are not included in the Intune benchmark. The CIS sections below will not map 1-to-1 with the Intune benchmark. If anyone has a public domain tool that will audit against the Intune benchmark, feel free to recommend it. For the most part, the Enterprise benchmark contains more security settings than the Intune benchmark. Auditing against it should provide good coverage of the Intune benchmark.
 
 | CIS Section | CIS Description | Result | Notes |
 | :---------- | :-------------- | :----- | :---- |
