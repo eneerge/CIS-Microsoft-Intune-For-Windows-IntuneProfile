@@ -30,10 +30,6 @@ To import a profile:
 
 NOTE: To use the new Import script, you may need to "Approve" the requested appaccess. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AccessRequests/menuId~/null)
 
-# Importing requirements
-You need the Microsoft.Graph powershell module. The import script will prompt you to install if it is missing. Otherwise you can install before running using the below command:
-`Install-Module Microsoft.Graph`
-
 # Known Issues
 - Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: `<![CDATA[]]>`). Configurations that specify a blank may report remediation failure. These may be refactored into a separate profile that does not use OMA-URI to prevent these "errors".
 
