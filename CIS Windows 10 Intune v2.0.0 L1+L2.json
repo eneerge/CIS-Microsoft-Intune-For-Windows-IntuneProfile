@@ -1949,7 +1949,7 @@
                     "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ADMX_Sharing/DisableHomeGroup",
                     "secretReferenceValueId":  null,
                     "isEncrypted":  false,
-                    "value":  "\u003cenabled/\u003e",
+                    "value":  1,
                     "isReadOnly":  false
                 },
                 {
@@ -1959,7 +1959,7 @@
                     "omaUri":  "./Device/Vendor/MSFT/Policy/Config/InternetExplorer/DisableInternetExplorerApp",
                     "secretReferenceValueId":  null,
                     "isEncrypted":  false,
-                    "value":  "\u003cenabled/\u003e",
+                    "value":  1,
                     "isReadOnly":  false
                 },
                         {
@@ -2276,7 +2276,7 @@
                     "displayName":  "18.10.67.3 (L1) Ensure \u0027Turn off Automatic Download and Install of updates\u0027 is set to \u0027Disabled\u0027",
                     "description":  "Implemented",
                     "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/AllowAppStoreAutoUpdate",
-                    "value":  0
+                    "value":  "\u003cdisabled/\u003e"
                 },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
