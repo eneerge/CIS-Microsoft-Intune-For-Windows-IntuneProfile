@@ -72,7 +72,7 @@
                             "displayName":  "2.2.2 (L1) Ensure \u0027Access this computer from the network\u0027 is set to \u0027Administrators, Remote Desktop Users\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/AccessFromNetwork",
-                            "value":  "AdministratorsRemote Desktop Users"
+                            "value":  "Administrators\uf000Remote Desktop Users"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -86,7 +86,7 @@
                             "displayName":  "2.2.4 (L1) Ensure \u0027Allow log on locally\u0027 is set to \u0027Administrators, Users\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/AllowLocalLogOn",
-                            "value":  "AdministratorsUsers"
+                            "value":  "Administrators\uf000Users"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -100,7 +100,7 @@
                             "displayName":  "2.2.6 (L1) Ensure \u0027Change the system time\u0027 is set to \u0027Administrators, LOCAL SERVICE\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/ChangeSystemTime",
-                            "value":  "AdministratorsLOCAL SERVICE"
+                            "value":  "Administrators\uf000LOCAL SERVICE"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -121,7 +121,7 @@
                             "displayName":  "2.2.9 (L1) Ensure \u0027Create global objects\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/CreateGlobalObjects",
-                            "value":  "AdministratorsLOCAL SERVICENETWORK SERVICESERVICE"
+                            "value":  "Administrators\uf000LOCAL SERVICE\uf000NETWORK SERVICE\uf000SERVICE"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -149,7 +149,7 @@
                             "displayName":  "2.2.13 (L1) Ensure \u0027Deny access to this computer from the network\u0027 to include \u0027Guests, Local account\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/DenyAccessFromNetwork",
-                            "value":  "GuestsLocal account"
+                            "value":  "Guests\uf000Local account"
                         },
                 {
                     "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -170,7 +170,7 @@
                             "displayName":  "2.2.16 (L1) Ensure \u0027Deny log on through Remote Desktop Services\u0027 to include \u0027Guests, Local account\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/DenyRemoteDesktopServicesLogOn",
-                            "value":  "GuestsLocal account"
+                            "value":  "Guests\uf000Local account"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -191,21 +191,21 @@
                             "displayName":  "2.2.19 (L1) Ensure \u0027Generate security audits\u0027 is set to \u0027LOCAL SERVICE, NETWORK SERVICE\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/GenerateSecurityAudits",
-                            "value":  "LOCAL SERVICENETWORK SERVICE"
+                            "value":  "LOCAL SERVICE\uf000NETWORK SERVICE"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
                             "displayName":  "2.2.20 (L1) Ensure \u0027Impersonate a client after authentication\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/ImpersonateClient",
-                            "value":  "AdministratorsLOCAL SERVICENETWORK SERVICESERVICE"
+                            "value":  "Administrators\uf000LOCAL SERVICE\uf000NETWORK SERVICE\uf000SERVICE"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
                             "displayName":  "2.2.21 (L1) Ensure \u0027Increase scheduling priority\u0027 is set to \u0027Administrators, Window Manager\\Window Manager Group\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/UserRights/IncreaseSchedulingPriority",
-                            "value":  "AdministratorsWindow Manager\\Window Manager Group"
+                            "value":  "Administrators\uf000Window Manager\\Window Manager Group"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -1271,7 +1271,7 @@
                             "displayName":  "18.6.14.1 (L1) Ensure \u0027Hardened UNC Paths\u0027 is set to \u0027Enabled, with \"Require Mutual Authentication\" and \"Require Integrity\" set for all NETLOGON and SYSVOL shares\u0027",
                             "description":  "Implemented",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/Connectivity/HardenedUNCPaths",
-                            "value":  "\u003cenabled/\u003e\u003cdata id=\"Pol_HardenedPaths\" value=\"\\\\*\\NETLOGONRequireMutualAuthentication=1,RequireIntegrity=1\\\\*\\SYSVOLRequireMutualAuthentication=1,RequireIntegrity=1\"/\u003e"
+                            "value":  "\u003cenabled/\u003e\u003cdata id=\"Pol_HardenedPaths\" value=\"\\\\*\\NETLOGON\uf000RequireMutualAuthentication=1,RequireIntegrity=1\uf000\\\\*\\SYSVOL\uf000RequireMutualAuthentication=1,RequireIntegrity=1\"/\u003e"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingString",
@@ -2008,7 +2008,7 @@
                             "displayName":  "18.10.43.4.1.1 and 18.10.43.4.1.2 (L1) Ensure \u0027Configure Attack Surface Reduction rules\u0027 is set to \u0027Enabled\u0027 18.9.47.4.1.2 (L1) Ensure \u0027Configure Attack Surface Reduction rules: Set the state for each ASR rule\u0027 is configured",
                             "description":  "Implemented++. Also block files not meeting a prevalance and enabled advanced protection against ransomware (opposed: Block Office communication application from creating child processes to prevent app launch issues)",
                             "omaUri":  "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/ExploitGuard_ASR_Rules",
-                            "value":  "\u003cenabled/\u003e\n\u003cdata id=\"ExploitGuard_ASR_Rules\" value=\"56a863a9-875e-4185-98a7-b882c64b5ce5156a863a9-875e-4185-98a7-b882c64b5ce517674ba52-37eb-4a4f-a9a1-f0f9a1619a2c1d4f940ab-401b-4efc-aadc-ad5f3c50688a19e6c4e1f-7d60-472f-ba1a-a39ef669e4b21be9ba2d9-53ea-4cdc-84e5-9b1eeee46550101443614-cd74-433a-b99e-2ecdc07bfc2515beb7efe-fd9a-4556-801d-275e5ffc04cc1d3e037e1-3eb8-44c8-a917-57927947596d13b576869-a4ec-4529-8536-b80a7769e899175668c1f-73b5-4cf0-bb93-3ecf5cb7cc84126190899-1602-49e8-8b27-eb1d0a1ce8692e6db77e5-3df2-4cf1-b95a-636979351e5b1d1e49aac-8f56-4280-b9ba-993a6d77406c1b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4192e97fa1-2edf-4476-bdd6-9dd0b4dddc7b1c1db55ab-c21a-4637-bb3f-a12568109d351\"/\u003e"
+                            "value":  "\u003cenabled/\u003e\n\u003cdata id=\"ExploitGuard_ASR_Rules\" value=\"56a863a9-875e-4185-98a7-b882c64b5ce5\uf0001\uf00056a863a9-875e-4185-98a7-b882c64b5ce5\uf0001\uf0007674ba52-37eb-4a4f-a9a1-f0f9a1619a2c\uf0001\uf000d4f940ab-401b-4efc-aadc-ad5f3c50688a\uf0001\uf0009e6c4e1f-7d60-472f-ba1a-a39ef669e4b2\uf0001\uf000be9ba2d9-53ea-4cdc-84e5-9b1eeee46550\uf0001\uf00001443614-cd74-433a-b99e-2ecdc07bfc25\uf0001\uf0005beb7efe-fd9a-4556-801d-275e5ffc04cc\uf0001\uf000d3e037e1-3eb8-44c8-a917-57927947596d\uf0001\uf0003b576869-a4ec-4529-8536-b80a7769e899\uf0001\uf00075668c1f-73b5-4cf0-bb93-3ecf5cb7cc84\uf0001\uf00026190899-1602-49e8-8b27-eb1d0a1ce869\uf0002\uf000e6db77e5-3df2-4cf1-b95a-636979351e5b\uf0001\uf000d1e49aac-8f56-4280-b9ba-993a6d77406c\uf0001\uf000b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4\uf0001\uf00092e97fa1-2edf-4476-bdd6-9dd0b4dddc7b\uf0001\uf000c1db55ab-c21a-4637-bb3f-a12568109d35\uf0001\"/\u003e"
                         },
                         {
                             "@odata.type":  "#microsoft.graph.omaSettingInteger",
