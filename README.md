@@ -28,7 +28,7 @@ To import a profile:
 3. Run the powershell script
 4. Enter the location to the JSON file when prompted
 
-NOTE: To use the new Import script, you may need to "Approve" the requested appaccess. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AppAppsPreview/menuId~/null)
+NOTE: To use the new Import script, you may need to "Approve" the requested appaccess. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AccessRequests/menuId~/null)
 
 # Importing requirements
 You need the Microsoft.Graph powershell module. The import script will prompt you to install if it is missing. Otherwise you can install before running using the below command:
