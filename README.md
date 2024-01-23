@@ -13,22 +13,26 @@ The profiles are all configured using OMA-URI. There are a few reasons for this 
 - It is clear what CIS option a particular configuration is addressing
 - When CIS recommendations change, it will be easy to make changes to align with the new recommendation
 - OMA-URIs allow for a "description". This description can be used to note configurations that differ from CIS and provide a reason for the difference. If you use Risk Acceptance Forms (RAF) in your environment, you can also note a RAF # to address the difference.
- 
 
+ 
 A lot of the OMA-URIs in these configuration profiles are not published by CIS. The OMA-URIs were found here: https://learn.microsoft.com/en-us/windows/client-management/mdm/
 Some configuration options were found by finding corresponding ADMX Group Policy files and locating their xml element ids. These are specified using the SyncML <data id=""> syntax as documented here: https://learn.microsoft.com/en-us/windows/client-management/understanding-admx-backed-policies#enabling-a-policy
 If you need to implement your own configurations, open the admx file (located at C:\windows\policydefintions) and locate the policy and the corresponding element you want to configure and follow the <enabled/><data id="config_id" values="value_you_want"/> syntax.
 
 # Importing
+2024.01.22 Microsoft no longer supports ADAL, so I have included a new script that uses the Microsoft.Graph Powershell Module to import the configuration.
+
 To import a profile:
-1. Download this Powershell Script: https://github.com/eneerge/Azure-Intune-Export-DeviceConfiguration-Decrypts/blob/main/DeviceConfiguration_Import_FromJSON.ps1
+1. Download this Powershell Script: [IntuneConfiguration_ImportCustomConfig.ps1](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/blob/main/IntuneConfiguration_ImportCustomConfig.ps1)
 2. Download the JSON configuration file in this repository
 3. Run the powershell script
 4. Enter the location to the JSON file when prompted
 
+NOTE: To use the new Import script, you may need to "Approve" the requested appaccess. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AppAppsPreview/menuId~/null)
+
 # Importing requirements
-You need the AzureAD powershell module. Run this from an administrative powershell console:
-`Install-Module AzureAD`
+You need the Microsoft.Graph powershell module. The import script will prompt you to install if it is missing. Otherwise you can install before running using the below command:
+`Install-Module Microsoft.Graph`
 
 # Known Issues
 - Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: `<![CDATA[]]>`). Configurations that specify a blank may report remediation failure. These may be refactored into a separate profile that does not use OMA-URI to prevent these "errors".
