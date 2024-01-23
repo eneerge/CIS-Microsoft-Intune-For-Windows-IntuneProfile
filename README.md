@@ -30,14 +30,12 @@ To import a profile:
 
 NOTE: To use the new Import script, you may need to "Approve" the requested appaccess. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AccessRequests/menuId~/null)
 
-# Known Issues
-- Some configurations require specifying a blank value. For example, the "EnableDelegation" setting. No user should be allowed this privilege. The recommendation is to leave this blank. The only way to specify a blank in Intune is to use the cdata option. (EG: `<![CDATA[]]>`). Configurations that specify a blank may report remediation failure. These may be refactored into a separate profile that does not use OMA-URI to prevent these "errors".
-
+# Known Issues / Troubleshooting
 To verify a configuration applied:
 - Open Event Viewer
 - Open the log "Application and Services Logs"\Microsoft\Windows\DeviceManagement-Enterprise-Diagnostics-Provider\Admin
 - Review any entries with "Error"
-  - Ignore event id 2545 (checkNewInstanceData) - this appears to be an Intune bug. See https://answers.microsoft.com/en-us/windows/forum/all/event-2545-microsoft-windows-devicemanagement/a7e0f8e9-685f-44d8-be69-58fd1f8a716e
+  - Ignore event id 2545 (checkNewInstanceData) - this appears to be an Intune bug. See https://answers.microsoft.com/en-us/windows/forum/all/event-2545-microsoft-windows-devicemanagement/a7e0f8e9-685f-44d8-be69-58fd1f8a716e. As of 2024.01.23, I am no longer seeing this in my deployment.
   - Ignore error referencing "./Device/Vendor/MSFT/Policy/ConfigOpoerations/ADMXInstall/Receiver/Properties/Policy/FakePolicy/Version. This is an expected error the informs you that Intune is working properly. See: https://www.reddit.com/r/Intune/comments/n8u51x/intune_fakepolicy_not_found_error/
 
 # Audit
