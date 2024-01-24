@@ -38,8 +38,11 @@ To verify a configuration applied:
   - Ignore event id 2545 (checkNewInstanceData) - this appears to be an Intune bug. See https://answers.microsoft.com/en-us/windows/forum/all/event-2545-microsoft-windows-devicemanagement/a7e0f8e9-685f-44d8-be69-58fd1f8a716e. As of 2024.01.23, I am no longer seeing this in my deployment.
   - Ignore error referencing "./Device/Vendor/MSFT/Policy/ConfigOpoerations/ADMXInstall/Receiver/Properties/Policy/FakePolicy/Version. This is an expected error the informs you that Intune is working properly. See: https://www.reddit.com/r/Intune/comments/n8u51x/intune_fakepolicy_not_found_error/
 
-Intune remediation failures:
-The User Rights Assignment policies that apply a blank value to the Local Security Settings (2.2.1 through 2.2.30) may report the error "0x87D1FDE8" (Remediation Failure). Despite this error, the blank policies are applied properly. This appears to be an issue with intune reporting. These blank policies can be refactored into a new policy (Endpoint protection/User Rights) that does not use OMA-URI to prevent this reporting error.
+- Intune remediation failures for User Rights Assignment policies that apply a blank value. (2.2.1 through 2.2.30)
+  - May report the error "0x87D1FDE8" (Remediation Failure). Despite this error, the blank policies are applied properly.
+  - This appears to be an issue with intune reporting. See the "cause" mentioned here: https://learn.microsoft.com/en-us/troubleshoot/mem/intune/device-configuration/device-configuration-profile-reports-error-2016281112
+  - Because blanks are specified using <!CDATA[]]>, Intune expects to receive this value in the response. However, only "blank" is sent back to Intune, resulting in this "error" even though the policy was applied successfully.
+  - These blank policies can be refactored into a new policy (Endpoint protection/User Rights) that does not use OMA-URI to prevent this reporting error.
 
 # Audit
 Here is the results of an audit of a workstation after running Hardening Kitty Audit (https://github.com/scipag/HardeningKitty) against the **Windows 10 Enterprise benchmark**. 
