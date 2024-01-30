@@ -95,6 +95,23 @@
   },
   {
     "enabled": true,
+    "installDate": 1639151017598,
+    "name": "support.umfoundation.com",
+    "sections": [
+      {
+        "code": "div.box div.content table td {\n  padding: 0px;\n}\ndiv.box div.content table#incidents_list td {\n  padding: 0px;\n}\ntd[title=\"Evan Greene\"] {\n  background: #cecece !important;\n}\n\n.action_buttons {\n  min-height: 10px !important;\n}",
+        "urlPrefixes": [
+          "https://support.umfoundation.com"
+        ]
+      }
+    ],
+    "updateDate": 1639151017598,
+    "_id": "6c71b198-bbd3-406c-9156-ed481c91f509",
+    "_rev": 1675365364946,
+    "id": 1
+  },
+  {
+    "enabled": true,
     "installDate": 1667489111699,
     "name": "endpoint iframe azure.net",
     "sections": [
