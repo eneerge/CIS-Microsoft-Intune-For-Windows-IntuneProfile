@@ -1,5 +1,5 @@
 # Windows 11 CIS Microsoft Intune for Windows v3.0.1
-These configuratuon templates aim to implement all aspects of the CIS Microsoft Intune for Windows v3.0.1 benchmark including L1 and L2 policies.
+These configuration templates aim to implement all aspects of the CIS Microsoft Intune for Windows v3.0.1 benchmark including L1 and L2 policies.
 
 # Status
 Currently testing and auditing.
@@ -38,7 +38,7 @@ Currently testing and auditing.
 | Skipped | 3.11.7.2.15 | BL | Ensure 'Require additional authentication at startup Configure TPM startup' is set to 'Enabled Do not allow TPM' (Automated) | Bitlocker is implemented using the Bitlocker policy in Intune, instead of OMAURI.
 | Skipped | 3.11.7.3.1 | BL | Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled' (Automated) | Bitlocker is implemented using the Bitlocker policy in Intune, instead of OMAURI.
 | Skipped | 3.11.7.3.2 | BL | Ensure 'Deny write access to removable drives not protected by BitLocker Do not allow write access to devices configured in another organization' is set to 'Enabled False' (Automated) | Bitlocker is implemented using the Bitlocker policy in Intune, instead of OMAURI.
-| Skipped | 3.11.28.11 | L1 | Ensure 'Turn off Microsoft Defender Antivirus' is set to 'Disabled' (Automated) | Enabling or disabling this policy may lead to unexpected or unsupported behavior. Microsoft recommends this policy be leftunconfigured. See https//learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-microsoftdefenderantivirus#disableantispywaredefender
+| Skipped | 3.11.28.11 | L1 | Ensure 'Turn off Microsoft Defender Antivirus' is set to 'Disabled' (Automated) | Enabling or disabling this policy may lead to unexpected or unsupported behavior. Microsoft recommends this policy be left unconfigured. See https//learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-microsoftdefenderantivirus#disableantispywaredefender
 | Skipped | 3.11.49.1 | L2 | Ensure 'Prevent Internet Explorer security prompt for Windows Installer scripts' is set to 'Disabled' (Automated) | IE does not run on Win11
 | Skipped | 5.1 | L1 | Ensure 'Account Logon Audit Credential Validation' is set to 'Success and Failure' (Automated) | This needs to be put in another policy that doesn't use OMAURI. 
 | Skipped | 5.2 | L1 | Ensure 'Account Logon Logoff Audit Account Lockout' is set to include 'Failure' (Automated)  | This needs to be put in another policy that doesn't use OMAURI.
