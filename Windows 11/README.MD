@@ -6,7 +6,7 @@ Currently testing and auditing.
 
 # Gaps / Unimplemented
 | Status  | CIS Section | Level | Configuration Description | Additional Info
-| :------ | :-----------| :-----| :-------------------------| :--------------|
+| :------ | :-----------| :-----| :-------------------------| :-------|
 | Skipped | 3.10.9.1.1 | BL | Ensure 'Prevent installation of devices that match any of these device IDs' is set to 'Enabled' (Automated)
 | Skipped | 3.10.9.1.2 | BL | Ensure 'Prevent installation of devices that match any of these device IDs Also apply to matching devices that are already installed.' is set to 'True' (checked) (Automated)
 | Skipped | 3.10.9.1.3 | BL | Ensure 'Prevent installation of devices that match any of these device IDs Prevent installation of devices that match any of these device IDs' is set to 'PCI\CC_0C0A' (Automated)
