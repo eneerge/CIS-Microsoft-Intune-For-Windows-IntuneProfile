@@ -4,7 +4,7 @@ These configuratuon templates aim to implement all aspects of the CIS Microsoft 
 # Status
 Currently testing and auditing.
 
-#Gaps / Unimplemented
+# Gaps / Unimplemented
 | Status  | CIS | Level | Configuration Description
 | :------ | :-- | :---- | :----------------------- |
 | Skipped | 3.10.9.1.1 | BL | Ensure 'Prevent installation of devices that match any of these device IDs' is set to 'Enabled' (Automated)
