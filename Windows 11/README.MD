@@ -67,7 +67,7 @@ Currently testing and auditing.
 | Skipped | 5.25 | L1 | Ensure 'System Audit Other System Events' is set to 'Success and Failure' (Automated) | This needs to be put in another policy that doesn't use OMAURI.
 | Skipped | 5.26 | L1 | Ensure 'System Audit Security State Change' is set to include 'Success' (Automated) | This needs to be put in another policy that doesn't use OMAURI.
 | Skipped | 5.27 | L1 | Ensure 'System Audit System Integrity' is set to 'Success and Failure' (Automated) | This needs to be put in another policy that doesn't use OMAURI.
-| Skipped | 21.7 | L1 | Ensure 'Attack Surface Reduction rules' are configured (Automated) - Configure this in a separate template outside of OMAURI
+| Skipped | 21.7 | L1 | Ensure 'Attack Surface Reduction rules' are configured (Automated) | Configure this in a separate template outside of OMAURI
 | Skipped | 69.1 | L2 | Ensure 'Bluetooth Audio Gateway Service (BTAGService)' is set to 'Disabled' (Automated) | No OMAURI
 | Skipped | 69.2 | L2 | Ensure 'Bluetooth Support Service (bthserv)' is set to 'Disabled' (Automated) | No OMAURI
 | Skipped | 69.4 | L2 | Ensure 'Downloaded Maps Manager (MapsBroker)' is set to 'Disabled' (Automated) | No OMAURI
