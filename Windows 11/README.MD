@@ -2,7 +2,8 @@
 These configuration templates aim to implement all aspects of the CIS Microsoft Intune for Windows v3.0.1 benchmark including L1 and L2 policies.
 
 # Status
-Currently testing and auditing.
+2024.06.28 Some configurations have returned a failure during audit and a few caused Intune conflicts. I am reviewing and tweaking. I will be breaking up the configurations into multiple powershell scripts so that both omauri and non-omauri configurations can be applied. These scripts will only map to the CIS benchmark for Windows 11.
+2024.06 Currently testing and auditing.
 
 # Gaps / Unimplemented
 | Status  | CIS Section | Level | Configuration Description | Additional Info
