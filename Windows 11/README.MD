@@ -19,7 +19,7 @@ I'm now using the Microsoft.Graph.Beta.DeviceManagement Powershell Module. To in
 `Install-Module Microsoft.Graph.Beta.DeviceManagement`
 
 # Status
-2024.07.05 Three configuration audit results have been uploaded to this repository that includes investigation into their failures and remediation procedures. Most failures have been remediated throughout the audits. However, there are still a few configurations that seem to be tricky get them to apply using Intune, and I may need to write additional remediation scripts to get them configured properly. Refer to the audit files to see what configurations are currently not being applied properly.
+2024.07.05 Three configuration audit results have been uploaded to this repository that includes investigation into their failures and remediation procedures. Most failures have been remediated throughout the audits. ASR and Bitlocker are the only failing configurations which are planned to be placed in a separate policy.
 
 2024.06.28 Some configurations have returned a failure during audit and a few caused Intune conflicts. I am reviewing and tweaking. I will be breaking up the configurations into multiple powershell scripts so that both omauri and non-omauri configurations can be applied. These scripts will only map to the CIS benchmark for Windows 11.
 
