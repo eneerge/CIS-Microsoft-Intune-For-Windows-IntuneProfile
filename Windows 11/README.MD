@@ -26,7 +26,7 @@ I'm now using the Microsoft.Graph.Beta.DeviceManagement Powershell Module. To in
 2024.06 Currently testing and auditing.
 
 # Audits
-I've attached the audits I have performed with the results. Significant time was put into this to ensure proper configuration. Please see the audit results to determine if anything needs to be address in your environment. A few items are still not producing the results I'm looking for.
+I've attached the audits I have performed with the results. Significant time was put into this to ensure proper configuration. Please see the audit results to determine if anything needs to be address in your environment. All items except for Bitlocker and the ASR configuration have been implemented and are passing.
 
 # Notes
 - CIS does not block web search in the start menu. I will release additional "amelioration" scripts to address this and some other issues I've observed with the CIS standard Intune recommendation.
