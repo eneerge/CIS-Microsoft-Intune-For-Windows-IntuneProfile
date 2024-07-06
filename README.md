@@ -1,6 +1,6 @@
 ![alt text](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/raw/main/screenshots/intuness.png?raw=true)
 
-June 10, 2024
+July 5, 2024
 
 # CIS-Microsoft-Intune-For-Windows-IntuneProfile
 This repository houses prebuilt Microsoft Intune configuration profiles in JSON format for Windows 10 and Windows 11 that can be imported into Microsoft Intune. (https://intune.microsoft.com).
@@ -26,15 +26,8 @@ To import a profile:
 
 NOTE: To use the new Import script, you may need to "Approve" the requested app access. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AccessRequests/menuId~/null)
 
-# Windows 11 CIS Gaps / Unimplemented Configurations
-In the Windows 11 template, I have added comments to the configuration that specifies what settings have not been implemented. The reason for this is either:
-- Because of a Microsoft recommendation that conflicts with CIS'
-- Because the setting would commonly break something
-- Because an OMAURI is not available.
-
-In addition, some settings have been implemented but have been "Opposed". This means, the CIS recommendation has been rejected by me for a particular reason in my environment as noted on in the description.
-You should review the unimplemented and oppposed settings and address these gaps in your environment either with rejection documentation or implementation elsewhere.
-A full test and audit of the new configuration is commencing now (June 10, 2024) to ensure proper implementation. Results will follow soon.
+# Windows 11
+New script added July 5, 2024 with multiple audit results.
 
 # Windows 10 CIS Gaps / Unimplemented Configurations
 The Windows 10 template has a few gaps that I have addressed manually in my environment. Please refer to the Audit results to to see if there's anything you should address. This configuration is currently running in an active production environment without any issue.
