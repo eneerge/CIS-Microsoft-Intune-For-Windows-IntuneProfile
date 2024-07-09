@@ -1,5 +1,5 @@
 ﻿Import-Module Microsoft.Graph.Beta.DeviceManagement
-
+Connect-MgGraph
 $params = @{
 	"@odata.type" = "#microsoft.graph.windows10EndpointProtectionConfiguration"
 	roleScopeTagIds = @(
