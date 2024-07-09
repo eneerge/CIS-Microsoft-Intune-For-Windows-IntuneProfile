@@ -23,7 +23,7 @@ If you need to implement your own configurations, open the admx file (located at
 2024.01.22 Microsoft no longer supports ADAL, so I have included a new script that uses the Microsoft.Graph Powershell Module to import the configuration.
 
 To import a profile:
-1. Download this Powershell Script: [IntuneConfiguration_ImportCustomConfig.ps1](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/blob/main/IntuneConfiguration_ImportCustomConfig.ps1)
+1. Download this Powershell Script: [IntuneConfiguration_ImportCustomConfig.ps1](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/blob/main/Windows%2010/ImportScript/ImportScriptIntuneConfiguration_ImportCustomConfig.ps1)
 2. Download the JSON configuration file in this repository
 3. Run the powershell script
 4. Enter the location to the JSON file when prompted
