@@ -248,10 +248,17 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "3.6.19.1 (L1) Ensure 'Require PIN pairing' is set to 'Enabled' (Automated)"
+        "displayName" = "3.6.19.1-1 (L1) Ensure 'Require PIN pairing' is set to 'Enabled' (Automated)"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WirelessDisplay/RequirePinForPairing"
         "value" = 2
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "3.6.19.1-2 (L1) Ensure 'Require PIN pairing' is set to 'Enabled' (Automated)"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_wlansvc/SetPINEnforced"
+        "value" = "<enabled/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -966,7 +973,7 @@ $params = @{
           "displayName" = "3.11.52.1.1 (L2) Ensure 'Prevent Codec Download (User)' is set to 'Enabled' (Automated)"
           "description" = "Implemented"
           "omaUri" = "./User/Vendor/MSFT/Policy/Config/ADMX_WindowsMediaPlayer/PolicyCodecUpdate"
-          "value" = "<disabled/>"
+          "value" = "<enabled/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -1307,7 +1314,7 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "24.5 (L1) Ensure 'Min Device Password Length' is set to '14 or more character(s)'"
-        "description" = "Implemented. This does not set the min length for Windows Hello. The PassportForWork setting controls Hello"
+        "description" = "Implemented. This does not set the min length for Windows Hello. The PassportForWork setting controls Hello Pin"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MinDevicePasswordLength"
         "value" = 14
     },
@@ -2236,6 +2243,13 @@ $params = @{
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/LAPS/Policies/BackupDirectory"
         "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "85.1x (L1) LAPS: Name of the locally managed admin account."
+        "description" = "Implemented. tadmin."
+        "omaUri" = "./Device/Vendor/MSFT/LAPS/Policies/AdministratorAccountName"
+        "value" = "tadmin"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
