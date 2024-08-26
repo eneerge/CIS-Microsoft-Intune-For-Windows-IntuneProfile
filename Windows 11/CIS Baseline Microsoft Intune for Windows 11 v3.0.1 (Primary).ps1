@@ -2148,6 +2148,13 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "77.1 (L1) Ensure 'Allow widgets' is set to 'Not allowed' (Automated)"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/NewsAndInterests/AllowNewsAndInterests"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "78.1 (L1) Ensure 'Disallow Exploit Protection Override' is set to '(Enable)' (Automated)"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsDefenderSecurityCenter/DisallowExploitProtectionOverride"
