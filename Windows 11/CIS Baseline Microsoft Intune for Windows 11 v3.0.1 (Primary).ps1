@@ -2148,13 +2148,6 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "75.2 (L1) Ensure 'Require UEFI Memory Attributes Table' is set to 'Require UEFI Memory Attributes Table' (Automated)"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/NewsAndInterests/AllowNewsAndInterests"
-        "value" = 0
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "78.1 (L1) Ensure 'Disallow Exploit Protection Override' is set to '(Enable)' (Automated)"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsDefenderSecurityCenter/DisallowExploitProtectionOverride"
