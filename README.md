@@ -32,7 +32,7 @@ NOTES:
 CIS Microsoft Intune for Windows 11 v3.0.1 (https://workbench.cisecurity.org/benchmarks/16853) is implemented.
 
 # Windows 10
-Windows 10 configuration script is currently archived and will no longer be updated due to the end of support for Windows 10 in October 2025. Please refer to the archived folder for the antiquated Windows 10 configuration scripts.
+Windows 10 configurations are all archived and will no longer be updated due to the end of support for Windows 10 in October 2025. Please navigate to the archived folder for the antiquated Windows 10 configuration scripts.
 
 # Audits
 These configurations are audited multiple times to ensure adherence to CIS published configurations. Small Excel files have been provided to view summary results of each audit.
