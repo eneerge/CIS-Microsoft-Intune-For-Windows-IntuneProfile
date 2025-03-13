@@ -1,16 +1,16 @@
 ![alt text](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/raw/main/screenshots/intuness.png?raw=true)
 
-July 5, 2024
+March 13, 2025
 
 # CIS-Microsoft-Intune-For-Windows-IntuneProfile
-This repository houses prebuilt Microsoft Intune configuration profiles in JSON format for Windows 10 and Windows 11 that can be imported into Microsoft Intune. (https://intune.microsoft.com).
+This repository houses prebuilt Microsoft Intune configuration profiles for Windows 10 and Windows 11 that can be imported into Microsoft Intune. (https://intune.microsoft.com). Older releases (archive folder) provided JSON files with a PowerShell script to import them. Newer versions use the Microsoft.Graph.DeviceManagement PowerShell module which will be automatically installed (User Scope) if required.
 
 # Implemented using OMA-URI
-The profiles are all configured using OMA-URI. There are a few reasons for this approach:
+Most settings are configured using OMA-URI. There are a few reasons for this approach:
 - Each configuration can be named according the section and name provided by CIS. EG: 1.1.1 <Name>
 - It is clear what CIS option a particular configuration is addressing
 - When CIS recommendations change, it will be easy to make changes to align with the new recommendation
-- OMA-URIs allow for a "description". This description can be used to note configurations that differ from CIS and provide a reason for the difference. If you use Risk Acceptance Forms (RAF) in your environment, you can also note a RAF # to address the difference.
+- OMA-URIs allow for a "description". This description can be used to note configurations that differ from CIS and provide a reason for the difference. If you use Risk Acceptance Forms (RAF) in your environment, you can also note a RAF # to address the difference/ allow Intune to reference external documentation.
 
  
 A lot of the OMA-URIs in these configuration profiles are not published by CIS. The OMA-URIs were found here: https://learn.microsoft.com/en-us/windows/client-management/mdm/
@@ -18,33 +18,43 @@ Some configuration options were found by finding corresponding ADMX Group Policy
 If you need to implement your own configurations, open the admx file (located at C:\windows\policydefintions) and locate the policy and the corresponding element you want to configure and follow the <enabled/><data id="config_id" values="value_you_want"/> syntax.
 
 # Importing
-To import a profile:
-1. Download this Powershell Script: [IntuneConfiguration_ImportCustomConfig.ps1](https://github.com/eneerge/CIS-Microsoft-Intune-For-Windows-IntuneProfile/blob/main/ImportScript/IntuneConfiguration_ImportCustomConfig.ps1)
-2. Download the JSON configuration file of your choosing (either Win11 or Win10)
-3. Run the powershell script
-4. Enter the location to the JSON file when prompted
+To import a configuration:
+1. Download the PowerShell script
+2. Edit the script to provide your Tenant ID, Login Message, and the name you would like to call the policy in Intune
+3. Run the PowerShell script
 
-NOTE: To use the new Import script, you may need to "Approve" the requested app access. This is done in the Azure Portal under [Enterprise Applications -> Admin consent Requests](https://portal.azure.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AccessRequests/menuId~/null)
+NOTES:
+- You may need to run `Set-ExecutionPolicy unrestricted` as a local admin to allow running of scripts
+- This script uses <b>Microsoft.Graph.DeviceManagement</b> (release version) to import the configuration. If this is not detected, it will automatically install in user scope. This means, it will install to your C:\Users\JohnDoe\Documents\WindowsPowerShell\Modules or C:\Users\JohnDoe\Company - UM Foundation\Documents\WindowsPowerShell\Modules. You can delete "Microsoft.Graph.DeviceManagement" the PowerShell subfolder to remove after importing if no longer needed.
+- You must have the proper Intune permissions to import. Typically this is the <b>Intune Administrator role</b>. Specifically, you need the following: `DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All`
 
 # Windows 11
-New script added July 5, 2024 with multiple audit results.
+CIS Microsoft Intune for Windows 11 v3.0.1 (https://workbench.cisecurity.org/benchmarks/16853) is implemented.
 
 # Windows 10 CIS Gaps / Unimplemented Configurations
-The Windows 10 template has a few gaps that I have addressed manually in my environment. Please refer to the Audit results to to see if there's anything you should address. This configuration is currently running in an active production environment without any issue.
+The Windows 10 template is currently archived and will no longer be updated due to the end of support for Windows 10 in October 2025. Please refer to the archived folder for the antiquated Windows 10 configuration scripts.
+
+# Audits
+These configurations are audited multiple times to ensure adherence to CIS published configurations. Small Excel files have been provided to view summary results of each audit.
+
+In some cases, the CIS configuration has been "opposed". You should review these and decide if these alternate configurations should apply in your environment. Configurations may be opposed for any of the following reasons:
+1. In some cases, CIS makes suggestions that are favor privacy over security. A few options, such as Windows Defender MAPS have been configured differently than CIS recommendations.
+2. Configurations that block people from properly communicating in a work environment (such as disabling the web camera) have been opposed for obvious reasons.
+3. The risk associated with uncommon attacks such as dumping memory from a computer that is in a sleep state are acceptable. Sleep states have been allowed.
+4. Other reasons are specified in the description if any setting is opposed.
 
 # Known Issues / Troubleshooting
 To verify a configuration applied:
 - Open Event Viewer on the machine the configuration was deployed to
 - Open "Application and Services Logs"\Microsoft\Windows\DeviceManagement-Enterprise-Diagnostics-Provider\Admin"
 - Review any entries with "Error"
-  - Ignore event id 2545 (checkNewInstanceData) - this appears to be an Intune bug. See https://answers.microsoft.com/en-us/windows/forum/all/event-2545-microsoft-windows-devicemanagement/a7e0f8e9-685f-44d8-be69-58fd1f8a716e. As of 2024.01.23, I am no longer seeing this in my deployment.
   - Ignore error referencing "./Device/Vendor/MSFT/Policy/ConfigOpoerations/ADMXInstall/Receiver/Properties/Policy/FakePolicy/Version. This is an expected error the informs you that Intune is working properly. See: https://www.reddit.com/r/Intune/comments/n8u51x/intune_fakepolicy_not_found_error/
 
 - Intune remediation failures for User Rights Assignment policies that apply a blank value. (2.2.1 through 2.2.30)
   - May report the error "0x87D1FDE8" (Remediation Failure). Despite this error, the blank policies are applied properly.
   - This appears to be an issue with intune reporting. See the "cause" mentioned here: https://learn.microsoft.com/en-us/troubleshoot/mem/intune/device-configuration/device-configuration-profile-reports-error-2016281112
   - Because blanks are specified using <!CDATA[]]>, Intune expects to receive this value in the response. However, only "blank" is sent back to Intune, resulting in this "error" even though the policy was applied successfully.
-  - These blank policies can be refactored into a new policy (Endpoint protection/User Rights) that does not use OMA-URI to prevent this reporting error.
+  - Due to this error, I have moved all "blank policies" into a separate non-OMAURI configuration policy.
 
 # Extras
 Firefox can be a pain to work with OMA-URIs. I created a stylesheet to make it a lot easier and that can be seen in the screenshot above. To install, go into the "Extras" folder for instructions.
