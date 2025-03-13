@@ -31,7 +31,7 @@ NOTES:
 # Windows 11
 CIS Microsoft Intune for Windows 11 v3.0.1 (https://workbench.cisecurity.org/benchmarks/16853) is implemented.
 
-# Windows 10 CIS Gaps / Unimplemented Configurations
+# Windows 10
 The Windows 10 template is currently archived and will no longer be updated due to the end of support for Windows 10 in October 2025. Please refer to the archived folder for the antiquated Windows 10 configuration scripts.
 
 # Audits
