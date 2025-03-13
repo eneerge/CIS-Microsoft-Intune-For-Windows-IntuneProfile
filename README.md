@@ -17,11 +17,11 @@ A lot of the OMA-URIs in these configuration profiles are not published by CIS. 
 Some configuration options were found by finding corresponding ADMX Group Policy files and locating their xml element ids. These are specified using the SyncML <data id=""> syntax as documented here: https://learn.microsoft.com/en-us/windows/client-management/understanding-admx-backed-policies#enabling-a-policy
 If you need to implement your own configurations, open the admx file (located at C:\windows\policydefintions) and locate the policy and the corresponding element you want to configure and follow the <enabled/><data id="config_id" values="value_you_want"/> syntax.
 
-# Importing
-To import a configuration:
+# How to Use
 1. Download the PowerShell script
 2. Edit the script to provide your Tenant ID, Login Message, and the name you would like to call the policy in Intune
-3. Run the PowerShell script
+3. Run the PowerShell script to import the configuration to Intune
+4. In Intune, assign the configuration to users/groups.
 
 NOTES:
 - You may need to run `Set-ExecutionPolicy unrestricted` as a local admin to allow running of scripts
