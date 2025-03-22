@@ -1,5 +1,5 @@
 # Configuration
-$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v3.0.1 (Bitlocker)"
+$intune_policy_name = "Baseline Microsoft Intune for Windows 11 v3.0.1 (Bitlocker)"
 $intune_policy_description = "Bitlocker CIS Baseline Policy implemented using OMAURI"
 
 # End Config
@@ -201,7 +201,22 @@ $params = @{
   )
 }
 
-c
+Write-Host "Connecting to Microsoft Graph..."
+try {
+  Connect-MgGraph -NoWelcome -Scopes "DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All" -ErrorAction Stop
+  Write-Host "Connected."
+}
+catch {
+    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $_.ToString()
+    Write-Host -ForegroundColor Red -BackgroundColor Black $_.ScriptStackTrace
+}
+
+$Context = Get-MgContext
+if ($null -eq $Context) {
+    Write-Host -ForegroundColor Red -BackgroundColor Black "There was an error connecting to Intune."
+    return 1
+}
+
 Write-Host "Writing Config to Intune..."
 try {
   $out = New-MgDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction SilentlyContinue
