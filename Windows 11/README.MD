@@ -11,7 +11,7 @@ The following configuration scripts have been created:
   - Certain configurations that CIS does not include in their recommendations, but probably should be set in an enterprise environment. IE: Disable Copilot, web search in start menu, etc.
 
 - CIS Baseline Microsoft Intune for Windows 11 v3.0.1 (Attack Surface Reduction)
-  - CIS 21.6 recommends that Attack Surface Reduction configurations be applied. This script provides configuration options for setting ASR rules and loads them as a new ASR configuration.
+  - CIS 21.7 recommends that Attack Surface Reduction configurations be applied. This script provides configuration options for setting ASR rules and loads them as a new ASR configuration.
 
 - CIS Baseline Microsoft Intune for Windows 11 v3.0.1 (Bitlocker OMAURI).ps1
   - Enables Bitlocker and backing up of recovery keys to Intune (using OMAURI)
