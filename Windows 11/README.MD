@@ -42,5 +42,7 @@ The following configuration scripts have been created:
 # Audits
 Audits have been performed at different stages of development of these scripts. Audit 1 refers to the first audit performed where several configurations were still found non-compliant. Audit 2 refers to the second iteration which addressed some of the missing configurations found during Audit 1. Audit 3 , 4 and later represent even further refinements. The last audit should represent the current state of these scripts.
 
+Most configurations marked as "Failed" are documented as "Opposed" with a reason for deviation from CIS recommendations. Items highlighted in yellow are highly recommended to review before deploying.
+
 # Notes
 Some settings recommended by CIS have been "Opposed". The reason for opposing any setting has been documented. Before using in your environment, please consider these deviations and whether they are relevant to your requirements. Options can easily be modified after importing into Intune.
