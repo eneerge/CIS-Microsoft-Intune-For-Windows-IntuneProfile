@@ -35,7 +35,7 @@ The following configuration scripts have been created:
 
 # How to Use
 1. Download the PowerShell script
-2. Edit the script to provide your Tenant ID, Login Message, and the name you would like to call the policy in Intune
+2. Edit the configuration settings in each script (Tenant ID, Policy Name, Description, etc)
 3. Run the PowerShell script to import the configuration to Intune
 4. In Intune, assign the configuration to users/groups.
 
@@ -43,6 +43,8 @@ The following configuration scripts have been created:
 Audits have been performed at different stages of development of these scripts. Audit 1 refers to the first audit performed where several configurations were still found non-compliant. Audit 2 refers to the second iteration which addressed some of the missing configurations found during Audit 1. Audit 3 , 4 and later represent even further refinements. The last audit should represent the current state of these scripts.
 
 Most configurations marked as "Failed" are documented as "Opposed" with a reason for deviation from CIS recommendations. Items highlighted in yellow are highly recommended to review before deploying.
+
+The audits are performed using Tenable Nessus Compliance Scans. Results from those scans are extracted and put into custom spreadsheet.
 
 # Notes
 Some settings recommended by CIS have been "Opposed". The reason for opposing any setting has been documented. Before using in your environment, please consider these deviations and whether they are relevant to your requirements. Options can easily be modified after importing into Intune.
