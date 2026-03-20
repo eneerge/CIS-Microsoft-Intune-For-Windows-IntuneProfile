@@ -654,14 +654,14 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.10.2 (L1) Ensure 'Enable App Installer Experimental Features' is set to 'Disabled'"
+          "displayName" = "4.11.10.2(L1) Ensure 'Enable App Installer Hash Override' is set to 'Disabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableHashOverride"
           "value" = "<disabled/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.10.3 (L1) Ensure 'Enable App Installer Experimental Features' is set to 'Disabled'"
+          "displayName" = "4.11.10.3(L1) Ensure 'Enable App Installer ms-appinstaller protocol' is set to 'Disabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableMSAppInstallerProtocol"
           "value" = "<disabled/>"
