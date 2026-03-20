@@ -288,6 +288,13 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.7.2 (L1) Ensure 'Configure Redirection Guard: Redirection Guard Options' is set to 'Enabled: Redirection Guard Enabled'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureRedirectionGuardPolicy"
+        "value" = "<enabled/>"
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.7.10 and 4.7.11 (L1) Ensure 'Point and Print Restrictions: When installing drivers for a new connection' is set to 'Enabled: Show warning and elevation prompt' (L1) Ensure 'Point and Print Restrictions: When updating drivers for an existing connection' is set to 'Enabled: Show warning and elevation prompt'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/PointAndPrintRestrictions"
@@ -322,13 +329,6 @@ $params = @{
         "value" = "<enabled/>"
     },
     @{
-          "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.10.9.2 (L1) Ensure 'Prevent the computer from joining a homegroup' is set to 'Enabled'"
-          "description" = "Implemented"
-          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_Sharing/DisableHomeGroup"
-          "value" = "<enabled/>"
-    },
-    @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.10.9.2 (L1) Ensure 'Prevent device metadata retrieval from the Internet' is set to 'Enabled'"
         "description" = "Implemented"
@@ -349,13 +349,6 @@ $params = @{
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_GroupPolicy/EnableCDP"
         "value" = "<disabled/>"
-    },
-    @{
-          "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.10.19.2 (L1) Ensure 'Turn off Microsoft Defender Antivirus' is set to 'Disabled'"
-          "description" = "Implemented. Caution: Make sure not using an alternative AV"
-          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableAntiSpywareDefender"
-          "value" = "<disabled/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -520,23 +513,9 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "4.10.29.5.1 (L1) Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_Power/DCConnectivityInStandby_2"
-        "value" = "<disabled/>"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.10.29.5.1 (L1) Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Power/RequirePasswordWhenComputerWakesOnBattery"
-        "value" = "<enabled/>"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "4.10.29.5.2 (L1) Ensure 'Allow network connectivity during connected-standby (plugged in)' is set to 'Disabled'"
-        "description" = "Opposed. Allowing connection while in approved location enables remote management and there is no effect on battery life."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_Power/ACConnectivityInStandby_2"
         "value" = "<enabled/>"
     },
     @{
@@ -603,13 +582,6 @@ $params = @{
           "value" = "<enabled/>"
     },
     @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "4.11.3.1 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'"
-        "description" = "Implemented. Can still login with Company Tenant/Intune Account. Only blocks consumer Microsoft accounts."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/Accounts_BlockMicrosoftAccounts"
-        "value" = 3
-    },
-    @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.3.2 (L2) Ensure 'Block launching Universal Windows apps with Windows Runtime API access from hosted content.' is set to 'Enabled'"
           "description" = "Implemented"
@@ -672,6 +644,27 @@ $params = @{
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_CredUI/NoLocalPasswordResetQuestions"
           "value" = "<enabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.10.1 (L1) Ensure 'Enable App Installer Experimental Features' is set to 'Disabled'"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableExperimentalFeatures"
+          "value" = "<disabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.10.2 (L1) Ensure 'Enable App Installer Experimental Features' is set to 'Disabled'"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableHashOverride"
+          "value" = "<disabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.10.3 (L1) Ensure 'Enable App Installer Experimental Features' is set to 'Disabled'"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableMSAppInstallerProtocol"
+          "value" = "<disabled/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -880,6 +873,13 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.36.4.3.5 (L2) Ensure 'Restrict clipboard transfer from server to client' is set to 'Enabled: Disable clipboard transfers from server to client'"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_TerminalServer/TS_CLIENT_CLIPBOARD"
+          "value" = "<enabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.36.4.9.1 (L1) Ensure 'Always prompt for password upon connection' is set to 'Enabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteDesktopServices/PromptForPasswordUponConnection"
@@ -964,6 +964,13 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.50.1 (L1) Ensure 'Enable MPR notifications for the system' is set to 'Disabled'"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsLogon/EnableMPRNotifications"
+          "value" = "<disabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.50.2 (L1) Ensure 'Sign-in and lock last interactive user automatically after a restart' is set to 'Disabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsLogon/AllowAutomaticRestartSignOn"
@@ -990,23 +997,13 @@ $params = @{
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_PowerShellExecutionPolicy/EnableTranscripting"
           "value" = "<enabled/><data id=`"OutputDirectory`" value=`"`"/>`n<data id=`"EnableInvocationHeader`" value=`"false`"/>"
     },
-    # Both of these are required to meet 4.11.55.1.1 - One is client and one is server
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.55.1.1-1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled' (Client)"
+          "displayName" = "4.11.55.1.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled' (Client)"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/AllowBasicAuthentication_Client"
           "value" = "<disabled/>"
     },
-    @{
-          "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.55.1.1-2 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled' (Server)"
-          "description" = "Implemented"
-          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/AllowBasicAuthentication_Service"
-          "value" = "<disabled/>"
-    },
-
-    # Both of these are required to meet 4.11.55.1.2 - One is client and one is server
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.55.1.2 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled' (Client)"
@@ -1016,14 +1013,6 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.55.1.2 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled' (Server)"
-          "description" = "Implemented"
-          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/AllowUnencryptedTraffic_Service"
-          "value" = "<disabled/>"
-    },
-
-    @{
-          "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.55.1.3 (L1) Ensure 'Disallow Digest authentication' is set to 'Enabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/DisallowDigestAuthentication"
@@ -1031,9 +1020,23 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.55.2.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled' (Server)"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/AllowBasicAuthentication_Service"
+          "value" = "<disabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.55.2.2 (L2) Ensure 'Allow remote server management through WinRM' is set to 'Disabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/AllowRemoteServerManagement"
+          "value" = "<disabled/>"
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingString"
+          "displayName" = "4.11.55.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled' (Server)"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteManagement/AllowUnencryptedTraffic_Service"
           "value" = "<disabled/>"
     },
     @{
@@ -1106,6 +1109,13 @@ $params = @{
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Audit/PolicyChange_AuditAuthorizationPolicyChange"
           "value" = 1
+    },
+    @{
+          "@odata.type" = "#microsoft.graph.omaSettingInteger"
+          "displayName" = "6.9 (L1) Ensure 'Audit Changes to Audit Policy' is set to include 'Success'"
+          "description" = "Implemented"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Audit/PolicyChange_AuditPolicyChange"
+          "value" = 3
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -1241,6 +1251,20 @@ $params = @{
         "value" = 1
     },
     @{
+        "@odata.type" = "#microsoft.graph.omaSettingBoolean"
+        "displayName" = "15.1 (L1) Ensure 'Config refresh' is set to 'Enabled'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/DMClient/Provider/MS DM Server/ConfigRefresh/Enabled"
+        "value" = $true
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "15.2 (L1) Config refresh cadence"
+        "description" = "Implemented. 90 minutes"
+        "omaUri" = "./Device/Vendor/MSFT/DMClient/Provider/MS DM Server/ConfigRefresh/Cadence"
+        "value" = 90
+    },
+    @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "22.1 (L1) Ensure 'Allow Behavior Monitoring' is set to 'Allowed'"
         "description" = "Implemented"
@@ -1282,7 +1306,21 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Defender/AllowScriptScanning"
         "value" = 1
     },
-    # 21.7 Attack Surface Reduction rules will be configured in a separate configuration
+    # 22.7 - 22.22 Attack Surface Reduction rules will be configured in a separate configuration
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.23 (L1) Ensure 'Days Until Aggressive Catchup Quick Scan' is set to '7 days' or fewer"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/DaysUntilAggressiveCatchupQuickScan"
+        "value" = 7
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.24 (L2) Ensure 'Enable Convert Warn To Block' is set to 'Warn verdicts are converted to block'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/EnableConvertWarnToBlock"
+        "value" = 1
+    },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "22.25 (L2) Ensure 'Enable File Hash Computation' is set to 'Enable'"
@@ -1299,9 +1337,44 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.27 (L1) Ensure 'Hide Exclusions From Local Users' is set to 'Enabled'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/HideExclusionsFromLocalUsers"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.28 (L1) Ensure 'Oobe Enable Rtp And Sig Update' is set to 'Enabled'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/OobeEnableRtpAndSigUpdate"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "22.29 (L1) Ensure 'PUA Protection' is set to 'PUA Protection on'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Defender/PUAProtection"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.30(L1) Ensure 'Quick Scan Include Exclusions' is set to '1'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/QuickScanIncludeExclusions"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.31 (L2) Ensure 'Remote Encryption Protection Aggressiveness' is set to 'Medium' or higher"
+        "description" = "Implemented. Medium: Use cloud aggregation and block when confidence level is above 99%."
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionAggressiveness"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "22.32(L1) Ensure 'Remote Encryption Protection Configured State' is set to 'Audit: Generate EDR detections without blocking' or higher"
+        "description" = "Implemented. Block: Prevent suspicious and malicious behaviors."
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionConfiguredState"
         "value" = 1
     },
     @{
@@ -1341,7 +1414,7 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "26.* This setting must be set so that various options under CIS 24.1 through 24.4 will work."
+        "displayName" = "26.1 (L1) Ensure 'Device Password Enabled' is set to 'Enabled'"
         "description" = "Must be set to apply CIS requirements 26.2, 26.3, 26.8"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/DevicePasswordEnabled"
         "value" = 1
@@ -1377,6 +1450,14 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "26.6(L1) Ensure 'Device Password Enabled: Max Device Password Failed Attempts' is set to '5 or fewer failed attempt(s), but not 0'"
+        "description" = "Implemented. 5"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MaxDevicePasswordFailedAttempts"
+        "value" = 5
+    },
+    #26.7 Max inactivity timeout is set in a separate policy so it is easier to configure different times for multiple devices
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "26.8 (L1) Ensure 'Min Device Password Length' is set to '14 or more character(s)'"
         "description" = "Implemented. This does not set the min length for Windows Hello. The PassportForWork setting controls Hello Pin"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MinDevicePasswordLength"
@@ -1388,6 +1469,13 @@ $params = @{
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MinimumPasswordAge"
         "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "28.1 (BL) Ensure 'Device Enumeration Policy' is set to 'Block all (most restrictive)'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DmaGuard/DeviceEnumerationPolicy"
+        "value" = 0
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -1585,21 +1673,6 @@ $params = @{
         "omaUri" = "./Vendor/MSFT/Firewall/MdmStore/PublicProfile/LogMaxFileSize"
         "value" = "32767"
     },
-    # Intune is currently unable to apply this to Windows 11 devices (errors when applying). Policy will be set in another configration.
-    <#@{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "45.12 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_SmartCardRemovalBehavior"
-        "value" = 3
-    },#>
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "49.12 (L1) Ensure 'Microsoft network client: Digitally sign communications (always)' is set to 'Enabled'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/MicrosoftNetworkClient_DigitallySignCommunicationsAlways"
-        "value" = 1
-    },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "46.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'"
@@ -1626,13 +1699,6 @@ $params = @{
         "displayName" = "49.2 (L1) Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/Accounts_LimitLocalAccountUseOfBlankPasswordsToConsoleLogonOnly"
-        "value" = 1
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "49.3 (L1) Ensure 'User Account Control: Detect application installations and prompt for elevation' is set to 'Enabled'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/UserAccountControl_DetectApplicationInstallationsAndPromptForElevation"
         "value" = 1
     },
     @{
@@ -1671,6 +1737,7 @@ $params = @{
         "value" = 1
     },
     # Moved into a separate policy
+    # 26.7 and 49.8
     <#@{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "49.8 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0'"
@@ -1691,6 +1758,22 @@ $params = @{
         "description" = "Implemented."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_MessageTitleForUsersAttemptingToLogOn"
         "value" = "$($logon_title)"
+    },
+
+    # Intune is currently unable to apply this to Windows 11 devices (errors when applying). Policy will be set in another configration.
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "49.11 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_SmartCardRemovalBehavior"
+        "value" = 3
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "49.12 (L1) Ensure 'Microsoft network client: Digitally sign communications (always)' is set to 'Enabled'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/MicrosoftNetworkClient_DigitallySignCommunicationsAlways"
+        "value" = 1
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -1813,6 +1896,13 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "49.30 (L1) Ensure 'User Account Control: Detect application installations and prompt for elevation' is set to 'Enabled'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/UserAccountControl_DetectApplicationInstallationsAndPromptForElevation"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "49.31 (L1) Ensure 'User Account Control: Only elevate UIAccess applications that are installed in secure locations' is set to 'Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/UserAccountControl_OnlyElevateUIAccessApplicationsThatAreInstalledInSecureLocations"
@@ -1848,6 +1938,20 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "50.1 (L1) Ensure 'Configure Lsa Protected Process is set to 'Enabled with UEFI Lock...'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalSecurityAuthority/ConfigureLsaProtectedProcess"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "54.1 (L2) Ensure 'Allow Message Sync' is set to 'message sync is not allowed and cannot be changed by the user.'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Messaging/AllowMessageSync"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "55.1 (L1) Ensure 'Allow apps from the Microsoft app store to auto update' is set to 'Allowed'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/AllowAppStoreAutoUpdate"
@@ -1858,6 +1962,22 @@ $params = @{
         "displayName" = "55.2 (L1) Ensure 'Allow Game DVR' is set to 'Block'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/AllowGameDVR"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "55.3 (L2) Ensure 'Allow Shared User App Data' is set to 'Block'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/AllowSharedUserAppData"
+        "value" = 0
+    },
+
+    # 55.4 - Warning: If the Self Service Password Reset (SSPR) feature is used in Microsoft Entra ID, an exception to this recommendation is needed as it's known to interfere with SSPR.
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "55.4 (L1) Ensure 'Block Non Admin User Install' is set to 'Allow'"
+        "description" = "Opposed. Enabling interferes with SSPR and we want to allow store installs."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/BlockNonAdminUserInstall"
         "value" = 0
     },
     @{
@@ -1888,6 +2008,13 @@ $params = @{
         "omaUri" = "./User/Vendor/MSFT/Policy/Config/ApplicationManagement/MSIAlwaysInstallWithElevatedPrivileges"
         "value" = 0
     },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "61.1 (L2) Ensure 'Disallow Cloud Notification' is set to 'Allow'"
+        "description" = "Opposed. Enabling this may break MDM functionality including Wipe, Unenroll, Remote Find, Mandatory App install, and more."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Notifications/DisallowCloudNotification"
+        "value" = 0
+    }
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "68.1 (L2) Ensure 'Allow Cross Device Clipboard' is set to 'Block'"
@@ -1960,20 +2087,6 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "75.1 (L1) Ensure 'Hypervisor Enforced Code Integrity' is set to 'Enabled with UEFI lock'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/VirtualizationBasedTechnology/HypervisorEnforcedCodeIntegrity"
-        "value" = 1
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "75.2 (L1) Ensure 'Require UEFI Memory Attributes Table' is set to 'Require UEFI Memory Attributes Table'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/VirtualizationBasedTechnology/RequireUEFIMemoryAttributesTable"
-        "value" = 1
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "76.1.1 (L1) Ensure 'Notify Malicious' is set to 'Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WebThreatDefense/NotifyMalicious"
@@ -2002,31 +2115,10 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "77.1 (L1) Ensure 'Allow widgets' is set to 'Not allowed'"
+        "displayName" = "79.1 (L1) Ensure 'Enable Sudo' is set to 'Sudo is disabled'"
         "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/NewsAndInterests/AllowNewsAndInterests"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Sudo/EnableSudo"
         "value" = 0
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "78.1 (L1) Ensure 'Disallow Exploit Protection Override' is set to '(Enable)'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsDefenderSecurityCenter/DisallowExploitProtectionOverride"
-        "value" = 1
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingBoolean"
-        "displayName" = "79.1 (L1) Ensure 'Facial Features Use Enhanced Anti Spoofing' is set to 'true'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/PassportForWork/Biometrics/FacialFeaturesUseEnhancedAntiSpoofing"
-        "value" = $true
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingBoolean"
-        "displayName" = "79.3 (L1) Ensure 'Require Security Device' is set to 'true'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/PassportForWork/$($tenant_id)/Policies/RequireSecurityDevice"
-        "value" = $true
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -2037,10 +2129,10 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "80.2 (L1) Ensure 'Allow Windows Ink Workspace' is set to 'Enabled: but the user can't access it above the lock screen' OR 'Disabled'"
-        "description" = "Implemented. Disabled on lockscreen."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsInkWorkspace/AllowWindowsInkWorkspace"
-        "value" = 1
+        "displayName" = "80.2 (L2) Ensure 'Allow Location' is set to 'Force Location Off...'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/AllowLocation"
+        "value" = 0
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -2048,6 +2140,13 @@ $params = @{
         "description" = "Implemented. 1. Off setting is no longer available in Windows 11."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/AllowTelemetry"
         "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "80.4 (L2) Ensure 'Disable Enterprise Auth Proxy' is set to 'Enable'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/DisableEnterpriseAuthProxy"
+        "value" = 0
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -2077,230 +2176,55 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/LimitDumpCollection"
         "value" = 1
     },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "85.1x (L1) LAPS: Name of the locally managed admin account."
-        "description" = "Implemented. tadmin."
-        "omaUri" = "./Device/Vendor/MSFT/LAPS/Policies/AdministratorAccountName"
-        "value" = "tadmin"
-    },
+    # 81.1 through 81.42 can not be set by omauri. Implemented using PowerShell script due to lack of capability to apply using OMAURI
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.1 (L2) Ensure 'Allow a Windows app to share application data between users' is set to 'Disabled'"
+        "displayName" = "90.1 (L1) Ensure 'Hypervisor Enforced Code Integrity' is set to 'Enabled with UEFI lock'"
         "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/AllowSharedUserAppData"
-        "value" = 0
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/VirtualizationBasedTechnology/HypervisorEnforcedCodeIntegrity"
+        "value" = 1
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.2 (L1) Ensure 'Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services' is set to 'Disabled'"
+        "displayName" = "90.2 (L1) Ensure 'Require UEFI Memory Attributes Table' is set to 'Require UEFI Memory Attributes Table'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/VirtualizationBasedTechnology/RequireUEFIMemoryAttributesTable"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "93.1 (L1) Ensure 'Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services' is set to 'Disabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Wifi/AllowAutoConnectToWiFiSenseHotspots"
         "value" = 0
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.3 (L2) Ensure 'Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service' is set to 'Enabled: Disable Authenticated Proxy usage'"
+        "displayName" = "94.1 (L1) Ensure 'Allow widgets' is set to 'Not allowed'"
         "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/DisableEnterpriseAuthProxy"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/NewsAndInterests/AllowNewsAndInterests"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "96.1 (L1) Ensure 'Disallow Exploit Protection Override' is set to '(Enable)'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsDefenderSecurityCenter/DisallowExploitProtectionOverride"
         "value" = 1
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.4 (BL) Ensure 'Enumeration policy for external devices incompatible with Kernel DMA Protection' is set to 'Enabled: Block All'"
+        "displayName" = "97.1 (L1) Ensure 'Enable ESS with Supported Peripherals' is set to 'Enhanced sign-in security will be enabled…'"
         "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DmaGuard/DeviceEnumerationPolicy"
-        "value" = 0
+        "omaUri" = "./Device/Vendor/MSFT/PassportForWork/Biometrics/EnableESSwithSupportedPeripherals"
+        "value" = 1
     },
     @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.5 (L1) Ensure 'Prevent non-admin users from installing packaged Windows apps' is set to 'Enabled'"
-        "description" = "Opposed. Users will be allowed to obtain packages from Windows Store."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/BlockNonAdminUserInstall"
-        "value" = 0
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.6 (L2) Ensure 'Turn off location' is set to 'Enabled'"
+        "@odata.type" = "#microsoft.graph.omaSettingBoolean"
+        "displayName" = "97.2 (L1) Ensure 'Facial Features Use Enhanced Anti Spoofing' is set to 'true'"
         "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/AllowLocation"
-        "value" = 0
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.7 (L1) Ensure 'Turn off Microsoft consumer experiences' is set to 'Enabled'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Experience/AllowWindowsConsumerFeatures"
-        "value" = 0
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "86.1.8 (L2) Ensure 'Turn off notifications network usage' is set to 'Enabled'"
-        "description" = "Opposed. Enabling this may break MDM functionality including Wipe, Unenroll, Remote Find, Mandatory App install, and more."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Notifications/DisallowCloudNotification"
-        "value" = 0
-    }
-    # 69.1 to 69.45 implemented using PowerShell script due to lack of capability to apply using OMAURI
-    # 74.1 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.2 (L1) Ensure 'Access From Network' is set to 'Administrators, Remote Desktop Users'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/AccessFromNetwork"
-        "value" = "Administrators$([char]0xF000)Remote Desktop Users"
-    },
-    # 74.3 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.4 (L1) Ensure 'Allow Local Log On' is set to 'Administrators, Users'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/AllowLocalLogOn"
-        "value" = "Administrators$([char]0xF000)Users"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.5 (L1) Ensure 'Backup Files And Directories' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/BackupFilesAndDirectories"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.6 (L1) Ensure 'Change System Time' is set to 'Administrators, LOCAL SERVICE'"
-        "description" = "Implemented."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/ChangeSystemTime"
-        "value" = "Administrators$([char]0xF000)LOCAL SERVICE"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.7 (L1) Ensure 'Create Global Objects' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'"
-        "description" = "Implemented."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/CreateGlobalObjects"
-        "value" = "Administrators$([char]0xF000)LOCAL SERVICE$([char]0xF000)NETWORK SERVICE$([char]0xF000)SERVICE"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.8 (L1) Ensure 'Create Page File' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/CreatePageFile"
-        "value" = "Administrators"
-    },
-    # 74.9 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.10 (L1) Configure 'Create Symbolic Links'"
-        "description" = "Implemented."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/CreateSymbolicLinks"
-        "value" = "Administrators"
-    },
-    # 74.11 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.12 (L1) Ensure 'Debug Programs' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/DebugPrograms"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.13 (L1) Ensure 'Deny Access From Network' to include 'Guests, Local account'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/DenyAccessFromNetwork"
-        "value" = "Guests$([char]0xF000)Local account"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.14 (L1) Ensure 'Deny Local Log On' to include 'Guests'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/DenyLocalLogOn"
-        "value" = "Guests"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.17 (L1) Ensure 'Deny Remote Desktop Services Log On' to include 'Guests, Local account'"
-        "description" = "Opposed. Allow local account (for IT RDP to their machines). Only disallow Guests."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/DenyRemoteDesktopServicesLogOn"
-        "value" = "Guests$([char]0xF000)Local account"
-    },
-    # 74.16 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.19 (L1) Ensure 'Generate Security Audits' is set to 'LOCAL SERVICE, NETWORK SERVICE'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/GenerateSecurityAudits"
-        "value" = "LOCAL SERVICE$([char]0xF000)NETWORK SERVICE"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.20 (L1) Ensure 'Impersonate Client' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/ImpersonateClient"
-        "value" = "Administrators$([char]0xF000)LOCAL SERVICE$([char]0xF000)NETWORK SERVICE$([char]0xF000)SERVICE"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.21 (L1) Ensure 'Increase Scheduling Priority' is set to 'Administrators, Window Manager\Window Manager Group'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/IncreaseSchedulingPriority"
-        "value" = "Administrators$([char]0xF000)Window Manager\Window Manager Group"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.22 (L1) Ensure 'Load Unload Device Drivers' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/LoadUnloadDeviceDrivers"
-        "value" = "Administrators"
-    },
-    # 74.21 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.25 (L1) Ensure 'Manage auditing and security log' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/ManageAuditingAndSecurityLog"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.26 (L1) Ensure 'Manage Volume' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/ManageVolume"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.27 (L1) Ensure 'Modify Firmware Environment' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/ModifyFirmwareEnvironment"
-        "value" = "Administrators"
-    },
-    # 74.25 implemented in the Blank Policy configuration due to issue with applying using OMAURI
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.29 (L1) Ensure 'Profile Single Process' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/ProfileSingleProcess"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.31 (L1) Ensure 'Remote Shutdown' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/RemoteShutdown"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.32 (L1) Ensure 'Restore Files And Directories' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/RestoreFilesAndDirectories"
-        "value" = "Administrators"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "89.34 (L1) Ensure 'Take Ownership' is set to 'Administrators'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/UserRights/TakeOwnership"
-        "value" = "Administrators"
+        "omaUri" = "./Device/Vendor/MSFT/PassportForWork/Biometrics/FacialFeaturesUseEnhancedAntiSpoofing"
+        "value" = $true
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -2310,10 +2234,38 @@ $params = @{
         "value" = 6
     },
     @{
+        "@odata.type" = "#microsoft.graph.omaSettingBoolean"
+        "displayName" = "97.4 (L1) Ensure 'Require Security Device' is set to 'true'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/PassportForWork/$($tenant_id)/Policies/RequireSecurityDevice"
+        "value" = $true
+    },
+    @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "98.1 (L2) Ensure 'Allow suggested apps in Windows Ink Workspace' is set to 'Block'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsInkWorkspace/AllowSuggestedAppsInWindowsInkWorkspace"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "98.2 (L1) Ensure 'Allow Windows Ink Workspace' is set to 'Enabled: but the user can't access it above the lock screen' OR 'Disabled'"
+        "description" = "Implemented. Disabled on lockscreen."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsInkWorkspace/AllowWindowsInkWorkspace"
+        "value" = 1
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "101.1 (L1) Ensure 'Allow Clipboard Redirection' is set to 'Not allowed'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsSandbox/AllowClipboardRedirection"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "101.2 (L1) Ensure 'Allow Networking' is set to 'Not allowed'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsSandbox/AllowNetworking"
         "value" = 0
     },
     @{
@@ -2360,17 +2312,25 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "104.1-1 (L1) Ensure 'Require PIN pairing' is set to 'Enabled'"
+        "displayName" = "104.1 (L1) Ensure 'Require PIN pairing' is set to 'Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WirelessDisplay/RequirePinForPairing"
         "value" = 2
     },
+    # Older Admin Template. DOes not set the same values. The WirelessDisplay policy is the proper one to use and not this admx one.
+    # @{
+    #     "@odata.type" = "#microsoft.graph.omaSettingString"
+    #     "displayName" = "104.1-2 (L1) Ensure 'Require PIN pairing' is set to 'Enabled'"
+    #     "description" = "Implemented"
+    #     "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_wlansvc/SetPINEnforced"
+    #     "value" = "<enabled/>"
+    # },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "104.1-2 (L1) Ensure 'Require PIN pairing' is set to 'Enabled'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_wlansvc/SetPINEnforced"
-        "value" = "<enabled/>"
+        "displayName" = "105.x (L1) LAPS: Name of the locally managed admin account."
+        "description" = "Implemented. tadmin. Not defined in CIS but good practice."
+        "omaUri" = "./Device/Vendor/MSFT/LAPS/Policies/AdministratorAccountName"
+        "value" = "tadmin"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
