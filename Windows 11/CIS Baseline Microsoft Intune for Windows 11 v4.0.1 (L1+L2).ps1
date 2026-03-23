@@ -50,20 +50,6 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.10.19.1 and 3.10.19.2 (L1) Ensure 'Configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE' 3.10.19.2 (L1) Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_GroupPolicy/CSE_Registry"
-        "value" = "<enabled/>`n<data id=`"CSE_NOBACKGROUND10`" value=`"false`"/>`n<data id=`"CSE_NOCHANGES10`" value=`"true`"/>"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.10.19.3 and 3.10.19.4 (L1) Ensure 'Configure security policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE' (L1) Ensure 'Configure security policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_GroupPolicy/CSE_Security"
-        "value" = "<enabled/>`n<data id=`"CSE_NOBACKGROUND11`" value=`"false`"/>`n<data id=`"CSE_NOCHANGES11`" value=`"true`"/>"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.1.3.1 (L1) Ensure 'Prevent enabling lock screen camera' is set to 'Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/PreventEnablingLockScreenCamera"
@@ -72,7 +58,7 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.1.3.2 (L1) Ensure 'Prevent enabling lock screen slide show' is set to 'Enabled'"
-        "description" = "Opposed. We will allow slideshows."
+        "description" = "Implemented."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/PreventLockScreenSlideShow"
         "value" = "<enabled/>"
     },
@@ -2181,7 +2167,7 @@ $params = @{
         "displayName" = "80.4 (L2) Ensure 'Disable Enterprise Auth Proxy' is set to 'Enable'"
         "description" = "Implemented."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/System/DisableEnterpriseAuthProxy"
-        "value" = 0
+        "value" = 1
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -2212,6 +2198,7 @@ $params = @{
         "value" = 1
     },
     # 81.1 through 81.42 can not be set by omauri. Implemented using PowerShell script due to lack of capability to apply using OMAURI
+    # 89.1 through 89.35 are implemented in a separate policy so that all User Rights can be implemented in one location. Blank policies can't be set by OMAURI.
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "90.1 (L1) Ensure 'Hypervisor Enforced Code Integrity' is set to 'Enabled with UEFI lock'"
