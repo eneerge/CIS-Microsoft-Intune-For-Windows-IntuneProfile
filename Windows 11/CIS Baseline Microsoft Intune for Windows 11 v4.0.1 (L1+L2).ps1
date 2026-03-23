@@ -295,6 +295,41 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.7.3, 4.7.4 (L1) Ensure 'Configure RPC connection settings: Protocol to use for outgoing RPC connections' is set to 'Enabled: RPC over TCP' and (L1) Ensure 'Configure RPC connection settings: Use authentication for outgoing RPC connections' is set to 'Enabled: Default'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureRpcConnectionPolicy"
+        "value" = "<enabled/>`n<data id=`"RpcConnectionProtocol_Enum`" value=`"0`"/>`n<data id=`"RpcConnectionAuthentication_Enum`" value=`"1`"/>"
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.7.5, 4.7.6 (L1) Ensure 'Configure RPC listener settings: Authentication protocol to use for incoming RPC connections:' is set to 'Enabled: Negotiate' or higher and (L1) Ensure 'Configure RPC listener settings: Protocols to allow for incoming RPC connections' is set to 'Enabled: RPC over TCP'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureRpcListenerPolicy"
+        "value" = "<enabled/>`n<data id=`"RpcListenerProtocols_Enum`" value=`"5`"/>`n<data id=`"RpcAuthenticationProtocol_Enum`" value=`"0`"/>"
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.7.7	(L1) Ensure 'Configure RPC over TCP port: RPC over TCP port:' is set to 'Enabled: 0'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureRpcTcpPort"
+        "value" = "<enabled/>`n<data id=`"RpcTcpPort`" value=`"0`"/>"
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.7.8 (L1) Ensure 'Limits print driver installation to Administrators' is set to 'Enabled'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/RestrictDriverInstallationToAdministrators"
+        "value" = "<enabled/>"
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.7.9 (L1) Ensure 'Manage processing of Queue-specific files: Manage processing of Queue-Specific files' is set to 'Enabled: Limit Queue-specific files to Color profiles'"
+        "description" = "Implemented."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureCopyFilesPolicy"
+        "value" = "<enabled/>`n<data id=`"CopyFilesPolicy_Enum`" value=`"1`"/>"
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.7.10 and 4.7.11 (L1) Ensure 'Point and Print Restrictions: When installing drivers for a new connection' is set to 'Enabled: Show warning and elevation prompt' (L1) Ensure 'Point and Print Restrictions: When updating drivers for an existing connection' is set to 'Enabled: Show warning and elevation prompt'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/PointAndPrintRestrictions"
@@ -654,14 +689,14 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.10.2(L1) Ensure 'Enable App Installer Hash Override' is set to 'Disabled'"
+          "displayName" = "4.11.10.2 (L1) Ensure 'Enable App Installer Hash Override' is set to 'Disabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableHashOverride"
           "value" = "<disabled/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.10.3(L1) Ensure 'Enable App Installer ms-appinstaller protocol' is set to 'Disabled'"
+          "displayName" = "4.11.10.3 (L1) Ensure 'Enable App Installer ms-appinstaller protocol' is set to 'Disabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DesktopAppInstaller/EnableMSAppInstallerProtocol"
           "value" = "<disabled/>"
