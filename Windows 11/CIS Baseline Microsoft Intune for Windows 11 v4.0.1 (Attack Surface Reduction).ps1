@@ -1,6 +1,6 @@
 # Configuration
-$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v3.0.1 (Attack Surface Reduction CIS 21.7)"
-$intune_policy_description = "Enable and Configure ASR rules to comply with CIS 21.7"
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.1 (Attack Surface Reduction CIS 22.7 to 22.22)"
+$intune_policy_description = "Enable and Configure ASR rules to comply with CIS 22.7 to 22.22"
 
 # ASR Configurations
 ####################
@@ -12,28 +12,28 @@ $intune_policy_description = "Enable and Configure ASR rules to comply with CIS 
 # - "audit" - Action will be logged, but will NOT be blocked (useful when researching environment before setting to block)
 # - "warn" - User will be warned about the action and can allow via the prompt. Any action allowed will only be allowed for 24 hours. This is not a valid option for some rules. 
 
-# CIS 21.7 Recommended
-$block_vuln_drivers = "block"            # Block abuse of exploited vulnerable signed drivers	56a863a9-875e-4185-98a7-b882c64b5ce5
-$block_adobe_child = "block"             # Block Adobe Reader from creating child processes	7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c
-$block_office_child = "block"            # Block all Office applications from creating child processes	d4f940ab-401b-4efc-aadc-ad5f3c50688a
-$block_cred_stealing_lsass = "block"     # Block credential stealing from the Windows local security authority subsystem (lsass.exe)	9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2
-$block_executable_email = "block"        # Block executable content from email client and webmail	be9ba2d9-53ea-4cdc-84e5-9b1eeee46550
-$block_obfuscated_scripts = "block"      # (Requires Cloud Protection Enabled) Block execution of potentially obfuscated scripts	5beb7efe-fd9a-4556-801d-275e5ffc04cc
-$block_executable_scripts = "block"      # (Does NOT support "warn" option) Block JavaScript or VBScript from launching downloaded executable content	d3e037e1-3eb8-44c8-a917-57927947596d
-$block_executable_office = "block"       # Block Office applications from creating executable content	3b576869-a4ec-4529-8536-b80a7769e899
-$block_injecting_office = "block"        # Block Office applications from injecting code into other processes	75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84
-$block_office_comms_child = "warn"       # (Opposed: Unable to open web links in Outlook when this is enabled) Block Office communication application from creating child processes	26190899-1602-49e8-8b27-eb1d0a1ce869
-$block_wmi_persistence = "block"         # (Does NOT support "warn" option) Block persistence through WMI event subscription  e6db77e5-3df2-4cf1-b95a-636979351e5b **** NOTE: File and folder exclusions not supported.	
-$block_untrusted_usb_processes = "block" # Block untrusted and unsigned processes that run from USB	b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4
-$block_apis_from_office_macros = "audit" # (Opposed: Can cause issues with Office Apps) Block Win32 API calls from Office macros.	92e97fa1-2edf-4476-bdd6-9dd0b4dddc7b
+# CIS recommendations
+$block_vuln_drivers = "block"            # 22.7 Block abuse of exploited vulnerable signed drivers	56a863a9-875e-4185-98a7-b882c64b5ce5
+$block_adobe_child = "block"             # 22.8 Block Adobe Reader from creating child processes	7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c
+$block_office_child = "block"            # 22.9 Block all Office applications from creating child processes	d4f940ab-401b-4efc-aadc-ad5f3c50688a
+$block_cred_stealing_lsass = "block"     # 22.10 Block credential stealing from the Windows local security authority subsystem (lsass.exe)	9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2
+$block_executable_email = "block"        # 22.11 Block executable content from email client and webmail	be9ba2d9-53ea-4cdc-84e5-9b1eeee46550
+$block_prevalence = "block"              # 22.12 (Requires Cloud Protection Enabled) Block executable files from running unless they meet a prevalence, age, or trusted list criterion (List managed by Microsoft)	01443614-cd74-433a-b99e-2ecdc07bfc25
+$block_obfuscated_scripts = "block"      # 22.13 (Requires Cloud Protection Enabled) Block execution of potentially obfuscated scripts	5beb7efe-fd9a-4556-801d-275e5ffc04cc
+$block_executable_scripts = "block"      # 22.14 (Does NOT support "warn" option) Block JavaScript or VBScript from launching downloaded executable content	d3e037e1-3eb8-44c8-a917-57927947596d
+$block_executable_office = "block"       # 22.15 Block Office applications from creating executable content	3b576869-a4ec-4529-8536-b80a7769e899
+$block_injecting_office = "block"        # 22.16 Block Office applications from injecting code into other processes	75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84
+$block_office_comms_child = "audit"      # 22.17 Block Office communication application from creating child processes	26190899-1602-49e8-8b27-eb1d0a1ce869 **** NOTE: "Block" will prevent opening links from Outlook. "Audit" or "Block" is CIS recommendation.
+$block_wmi_persistence = "block"         # 22.18 (Does NOT support "warn" option) Block persistence through WMI event subscription  e6db77e5-3df2-4cf1-b95a-636979351e5b **** NOTE: File and folder exclusions not supported.	
+$block_wmi_psexec_processes = "block"    # 22.19 Block process creations originating from PSExec and WMI commands	d1e49aac-8f56-4280-b9ba-993a6d77406c
+$block_untrusted_usb_processes = "block" # 22.20 Block untrusted and unsigned processes that run from USB	b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4
+$block_apis_from_office_macros = "audit" # 22.21 (Opposed: Can cause issues with Office Apps. Will set to audit for monitoring) Block Win32 API calls from Office macros.	92e97fa1-2edf-4476-bdd6-9dd0b4dddc7b
+$block_advanced_ransomware = "block"     # 22.22 (Requires Cloud Protection Enabled, Does NOT support "warn" option) Use advanced protection against ransomware	c1db55ab-c21a-4637-bb3f-a12568109d35
 
 # Additional Hardening - Not Officially Documented/Recommended by CIS
-$block_prevalence = "block" # (Requires Cloud Protection Enabled) Block executable files from running unless they meet a prevalence, age, or trusted list criterion (List managed by Microsoft)	01443614-cd74-433a-b99e-2ecdc07bfc25
-$block_wmi_psexec_processes = "block" # Block process creations originating from PSExec and WMI commands	d1e49aac-8f56-4280-b9ba-993a6d77406c
 $block_safe_mode = "off" # Block rebooting machine in Safe Mode (preview)	33ddedf1-c6e0-47cb-833e-de6133960387
-$block_fake_system_tools = "audit" # (Observed issues opening legitimate tools in some cases) Block use of copied or impersonated system tools (preview)	c0033c00-d16d-4114-a5a0-dc9b3a7d2ceb
+$block_fake_system_tools = "audit" # (Observed issues opening legitimate tools in some cases) Block use of copied or impersonated system tools	c0033c00-d16d-4114-a5a0-dc9b3a7d2ceb
 $block_webshells = "block" # Block Webshell creation for Servers	a8f5898e-1dc8-49a9-9878-85004b8a61e6
-$block_advanced_ransomware = "block" # (Requires Cloud Protection Enabled, Does NOT support "warn" option) Use advanced protection against ransomware	c1db55ab-c21a-4637-bb3f-a12568109d35
 
 # Add global exclusions for Attack Surface Reduction (recommended)
 # Exclusions will ensure compatibility with known software in the environment. Failure to add exclusion could potentially result in blocking legitimate software.
