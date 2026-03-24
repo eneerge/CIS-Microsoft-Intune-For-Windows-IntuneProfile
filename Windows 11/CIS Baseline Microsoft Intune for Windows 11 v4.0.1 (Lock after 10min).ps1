@@ -1,6 +1,6 @@
 # Configuration
-$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v3.0.1 (Lock after 5min)"
-$intune_policy_description = "Lock devices after 5 minutes of inactivity."
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.1 (Lock after 10min)"
+$intune_policy_description = "Lock devices after 10 minutes of inactivity."
 
 # End Config
 ############
@@ -37,9 +37,9 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "45.9 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0' (Automated)"
-        "description" = "Implemented. 300 seconds."
+        "description" = "Implemented. 600 seconds (10 minutes)"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_MachineInactivityLimit"
-        "value" = 300
+        "value" = 600
     }
   )
 }
