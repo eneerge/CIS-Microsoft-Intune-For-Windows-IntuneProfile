@@ -37,7 +37,7 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.11.7.1.1 through 4.11.7.1.8 (BL) Fixed Data Drives"
-        "description" = "Implemented most. Opposed #3.11.7.1.3, #3.11.7.1.6, and #3.11.7.1.8 because we want to force backing up recovery key and passwords to Entra"
+        "description" = "Implemented most. Opposed #4.11.7.1.2, #4.11.7.1.6, and #4.11.7.1.8 because we want to force backing up recovery key and passwords to Entra"
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/FixedDrivesRecoveryOptions"
 
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#fixeddrivesrecoveryoptions
@@ -74,8 +74,8 @@ $params = @{
     ############################
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "4.11.7.2.1 through 3.11.7.2.14 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled'"
-        "description" = "Implemented all except 4.11.7.2.2 and 4.11.7.2.8"
+        "displayName" = "4.11.7.2.1 through 4.11.7.2.8"
+        "description" = "Implemented all except 4.11.7.2.2 and 4.11.7.2.3"
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/SystemDrivesRecoveryOptions"
 
         # 4.11.7.2.1 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered' is set to 'Enabled' 
@@ -142,7 +142,7 @@ $params = @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp?WT.mc_id=Portal-fx#systemdrivesencryptiontype
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/FixedDrivesEncryptionType"
         "value" = "<enabled/><data id=`"FDVEncryptionTypeDropDown_Name`" value=`"2`"/>"
-    }
+    },
     ############################
     # Removable Drives 4.11.7.3
     ############################
