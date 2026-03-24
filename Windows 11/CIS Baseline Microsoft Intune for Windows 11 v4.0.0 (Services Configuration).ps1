@@ -140,7 +140,3 @@ Set-Service -Name XblGameSave -StartupType Disabled -ErrorAction SilentlyContinu
 
 # 81.42	(L1) Ensure 'Xbox Live Networking Service (XboxNetApiSvc)' is set to 'Disabled'
 Set-Service -Name XboxNetApiSvc -StartupType Disabled -ErrorAction SilentlyContinue
-
-# xx.x (L1) Ensure 'Internet Connection Sharing (ICS) (SharedAccess)' is set to 'Disabled'
-# Removed from CIS, but still not recommended to have running
-Set-Service -Name SharedAccess -StartupType Disabled -ErrorAction SilentlyContinue
