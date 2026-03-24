@@ -1,5 +1,5 @@
 # Configuration
-$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.1 (Attack Surface Reduction CIS 22.7 to 22.22)"
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (Attack Surface Reduction CIS 22.7 to 22.22)"
 $intune_policy_description = "Enable and Configure ASR rules to comply with CIS 22.7 to 22.22"
 
 # ASR Configurations

@@ -1,5 +1,5 @@
 # Configuration
-$intune_policy_name = "Baseline Microsoft Intune for Windows 11 v4.0.1 (Bitlocker)"
+$intune_policy_name = "Baseline Microsoft Intune for Windows 11 v4.0.0 (Bitlocker)"
 $intune_policy_description = "Bitlocker CIS Baseline Policy implemented using OMAURI"
 
 # End Config

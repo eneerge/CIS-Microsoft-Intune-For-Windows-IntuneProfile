@@ -1,5 +1,5 @@
 ﻿# Configuration
-$intune_policy_name = "[test] CIS Baseline Microsoft Intune for Windows 11 v4.0.1 (User Rights Policies)"
+$intune_policy_name = "[test] CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (User Rights Policies)"
 $intune_policy_description = "These policies apply User Rights Policies mapped to CIS 89.1 to 89.35"
 
 # End Config

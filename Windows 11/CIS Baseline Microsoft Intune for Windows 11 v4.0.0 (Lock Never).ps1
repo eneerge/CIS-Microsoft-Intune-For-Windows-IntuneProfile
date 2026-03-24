@@ -1,6 +1,6 @@
 # Configuration
-$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.1 (Lock after 10min)"
-$intune_policy_description = "Lock devices after 10 minutes of inactivity."
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (Lock Never)"
+$intune_policy_description = "Never lock devices (for presentation machines, teleprompters, etc)"
 
 # End Config
 ############
@@ -36,10 +36,38 @@ $params = @{
   omaSettings = @(
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "45.9 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0' (Automated)"
-        "description" = "Implemented. 600 seconds (10 minutes)"
+        "displayName" = "26.7 (L1) Ensure 'Device Password Enabled: Max Inactivity Time Device Lock' is set to '15 or fewer minutes, but not 0'"
+        "description" = "Opposed. Disabled for this configuration."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MaxInactivityTimeDeviceLock"
+        "value" = 0
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "49.8 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0'"
+        "description" = "Opposed. Timeout will be set to 599940 (max)"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_MachineInactivityLimit"
-        "value" = 600
+        "value" = 599940
+    },
+    @{
+      "@odata.type" = "#microsoft.graph.omaSettingString"
+      "displayName" = "Disable screen saver"
+      "description" = "Screensaver will be disabled"
+      "omaUri" = "./User/Vendor/MSFT/Policy/Config/ADMX_ControlPanelDisplay/CPL_Personalization_EnableScreenSaver"
+      "value" = "<disabled/>"
+    },
+    @{
+      "@odata.type" = "#microsoft.graph.omaSettingString"
+      "displayName" = "Disable password protected screen saver"
+      "description" = ""
+      "omaUri" = "./User/Vendor/MSFT/Policy/Config/ADMX_ControlPanelDisplay/CPL_Personalization_ScreenSaverIsSecure"
+      "value" = "<disabled/>"
+    },
+    @{
+      "@odata.type" = "#microsoft.graph.omaSettingString"
+      "displayName" = "Set screen saver timeout to high value."
+      "description" = "Backup in the event screen saver is enabled"
+      "omaUri" = "./User/Vendor/MSFT/Policy/Config/ADMX_ControlPanelDisplay/CPL_Personalization_ScreenSaverTimeOut"
+      "value" = "<enabled/><data id=`"ScreenSaverTimeOutFreqSpin`" value=`"9999`"/>"
     }
   )
 }
