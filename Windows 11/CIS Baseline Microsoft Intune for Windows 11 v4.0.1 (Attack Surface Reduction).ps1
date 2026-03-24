@@ -31,7 +31,7 @@ $block_apis_from_office_macros = "audit" # 22.21 (Opposed: Can cause issues with
 $block_advanced_ransomware = "block"     # 22.22 (Requires Cloud Protection Enabled, Does NOT support "warn" option) Use advanced protection against ransomware	c1db55ab-c21a-4637-bb3f-a12568109d35
 
 # Additional Hardening - Not Officially Documented/Recommended by CIS
-$block_safe_mode = "off" # Block rebooting machine in Safe Mode (preview)	33ddedf1-c6e0-47cb-833e-de6133960387
+$block_safe_mode = "off" # Block rebooting machine in Safe Mode	33ddedf1-c6e0-47cb-833e-de6133960387
 $block_fake_system_tools = "audit" # (Observed issues opening legitimate tools in some cases) Block use of copied or impersonated system tools	c0033c00-d16d-4114-a5a0-dc9b3a7d2ceb
 $block_webshells = "block" # Block Webshell creation for Servers	a8f5898e-1dc8-49a9-9878-85004b8a61e6
 
