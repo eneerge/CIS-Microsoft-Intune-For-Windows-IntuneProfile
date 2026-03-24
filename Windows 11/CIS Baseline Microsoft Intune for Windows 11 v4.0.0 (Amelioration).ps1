@@ -31,7 +31,7 @@ $params = @{
   deviceManagementApplicabilityRuleDeviceMode = $null
   description = "$($intune_policy_description)"
   displayName = "$($intune_policy_name)"
-  version = 20250322
+  version = 20260324
   omaSettings = @(
     @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-search#configuresearchontaskbarmode
