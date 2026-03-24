@@ -1,5 +1,5 @@
 # Configuration
-$intune_policy_name = "Baseline Microsoft Intune for Windows 11 v3.0.1 (Bitlocker)"
+$intune_policy_name = "Baseline Microsoft Intune for Windows 11 v4.0.1 (Bitlocker)"
 $intune_policy_description = "Bitlocker CIS Baseline Policy implemented using OMAURI"
 
 # End Config
@@ -29,130 +29,135 @@ $params = @{
   deviceManagementApplicabilityRuleDeviceMode = $null
   description = $intune_policy_description
   displayName = $intune_policy_name
-  version = 20250314
+  version = 20260324
   omaSettings = @(
     ############################
-    # Fixed Drives
+    # Fixed Drives 4.11.7.1
     ############################
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.11.7.1.1 through 3.11.7.1.8 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled'"
+        "displayName" = "4.11.7.1.1 through 4.11.7.1.8 (BL) Fixed Data Drives"
         "description" = "Implemented most. Opposed #3.11.7.1.3, #3.11.7.1.6, and #3.11.7.1.8 because we want to force backing up recovery key and passwords to Entra"
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/FixedDrivesRecoveryOptions"
 
-        # 3.11.7.1.1 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled' 
+        # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#fixeddrivesrecoveryoptions
+        # 4.11.7.1.1 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled' 
         "value" = "<enabled/>" +
 
-            # 3.11.7.1.2 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Key' is set to 'Enabled: Allow 256-bit recovery key' 
-            # Opposed: We will require a 256-bit recovery key instead of simply "allowing" one as recommended by CIS
+            # 4.11.7.1.2 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Key' is set to 'Enabled: Allow 256-bit recovery key' 
+            # Opposed: We will -REQUIRE- a 256-bit recovery key instead of simply "allowing" one as recommended by CIS
             "<data id=`"FDVRecoveryKeyUsageDropDown_Name`" value=`"1`"/>" +
 
-            # 3.11.7.1.3 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Password' is set to 'Enabled: Allow 48-digit recovery password' 
+            # 4.11.7.1.3 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Password' is set to 'Enabled: Allow 48-digit recovery password' 
             "<data id=`"FDVRecoveryPasswordUsageDropDown_Name`" value=`"2`"/>" +
 
-            # 3.11.7.1.4 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Allow data recovery agent' is set to 'Enabled: True' 
+            # 4.11.7.1.4 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Allow data recovery agent' is set to 'Enabled: True' 
             "<data id=`"FDVAllowDRA_Name`" value=`"true`"/>" +
 
-            # 3.11.7.1.5 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Configure storage of BitLocker recovery information to AD DS' is set to 'Enabled: Backup recovery passwords and key packages' 
+            # 4.11.7.1.5 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Configure storage of BitLocker recovery information to AD DS' is set to 'Enabled: Backup recovery passwords and key packages' 
             "<data id=`"FDVActiveDirectoryBackupDropDown_Name`" value=`"1`"/>" +
 
-            # 3.11.7.1.6 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for fixed data drives' is set to 'Enabled: False' 
+            # 4.11.7.1.6 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for fixed data drives' is set to 'Enabled: False' 
             # Opposed: We do not want to enable Bitlocker until all key informaiton has been backed up to prevent data loss.
             "<data id=`"FDVRequireActiveDirectoryBackup_Name`" value=`"true`"/>" +
 
-            # 3.11.7.1.7 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True' 
+            # 4.11.7.1.7 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True' 
             "<data id=`"FDVHideRecoveryPage_Name`" value=`"true`"/>" +
 
-            # 3.11.7.1.8 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Save BitLocker recovery information to AD DS for fixed data drives' is set to 'Enabled: False' 
+            # 4.11.7.1.8 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Save BitLocker recovery information to AD DS for fixed data drives' is set to 'Enabled: False' 
             # Opposed: We will save the Bitlocker key information in Entra so that recovery can be performed if required
             "<data id=`"FDVActiveDirectoryBackup_Name`" value=`"true`"/>"
     },
 
     ############################
-    # Operating System Drives
+    # Operating System Drives 4.11.7.2
     ############################
     @{
-         # 3.11.7.2.1 (BL) Ensure 'Allow enhanced PINs for startup' is set to 'Enabled'
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.11.7.2.1 (BL) Ensure 'Allow enhanced PINs for startup' is set to 'Enabled'"
-        "description" = "Implemented. Opposed. We will accept the risk associated with not having a startup pin, thus enhanced pins will also be disabled."
-        "omaUri" = "./Device/Vendor/MSFT/BitLocker/SystemDrivesEnhancedPIN"
-        "value" = "<enabled/>"
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.11.7.2.2 through 3.11.7.2.9 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled'"
-        "description" = "Implemented all except 3.11.7.2.3"
+        "displayName" = "4.11.7.2.1 through 3.11.7.2.14 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled'"
+        "description" = "Implemented all except 4.11.7.2.2 and 4.11.7.2.8"
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/SystemDrivesRecoveryOptions"
 
-        # 3.11.7.2.2 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered' is set to 'Enabled' 
+        # 4.11.7.2.1 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered' is set to 'Enabled' 
         "value" = "<enabled/>" +
 
-            # 3.11.7.2.3 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Key' is set to 'Enabled: Do not allow 256-bit recovery key' 
-            # Opposed: We will require a 256-bit recovery key so data can be recovered from secondary drives
+            # 4.11.7.2.2 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Key' is set to 'Enabled: Do not allow 256-bit recovery key' 
+            # Opposed: We will require a 256-bit recovery key
             "<data id=`"OSRecoveryKeyUsageDropDown_Name`" value=`"0`"/>" +
 
-            # 3.11.7.2.4 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Password' is set to 'Enabled: Require 48-digit recovery password'
-            # Opposed: Key is backed up to Azure and we prefer to use a Key for restoration. However, password is still allowed if one wants to create.
+            # 4.11.7.2.3 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Password' is set to 'Enabled: Require 48-digit recovery password'
+            # Opposed: Key is backed up to Azure and we prefer to use a Key for restoration. However, password is still allowed if user wants to create.
             "<data id=`"OSRecoveryPasswordUsageDropDown_Name`" value=`"2`"/>" +
 
-            # 3.11.7.2.5 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Allow data recovery agent' is set to 'Enabled: False' 
+            # 4.11.7.2.4 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Allow data recovery agent' is set to 'Enabled: False' 
             "<data id=`"OSAllowDRA_Name`" value=`"false`"/>" +
 
-            # 3.11.7.2.6 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Configure storage of BitLocker recovery information to AD DS:' is set to 'Enabled: Store recovery passwords and key packages' 
+            # 4.11.7.2.5 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Configure storage of BitLocker recovery information to AD DS:' is set to 'Enabled: Store recovery passwords and key packages' 
             "<data id=`"OSActiveDirectoryBackupDropDown_Name`" value=`"1`"/>" +
 
-            # 3.11.7.2.7 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for operating system drives' is set to 'Enabled: True' 
+            # 4.11.7.2.6 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for operating system drives' is set to 'Enabled: True' 
             "<data id=`"OSRequireActiveDirectoryBackup_Name`" value=`"true`"/>" +
 
-            # 3.11.7.2.8 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True' 
+            # 4.11.7.2.7 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True' 
             "<data id=`"OSHideRecoveryPage_Name`" value=`"true`"/>" +
 
-            # 3.11.7.2.9 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Save BitLocker recovery information to AD DS for operating system drives' is set to 'Enabled: True' 
+            # 4.11.7.2.8 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Save BitLocker recovery information to AD DS for operating system drives' is set to 'Enabled: True' 
             "<data id=`"OSActiveDirectoryBackup_Name`" value=`"true`"/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.11.7.2.10 to 3.11.7.2.15"
+        "displayName" = "4.11.7.2.9 to 4.11.7.2.13"
         "description" = "Implemented"
 
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#systemdrivesrequirestartupauthentication
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/SystemDrivesRequireStartupAuthentication"
 
-        # 3.11.7.2.10 (BL) Ensure 'Require additional authentication at startup' is set to 'Enabled'
+        # 4.11.7.2.9 (BL) Ensure 'Require additional authentication at startup' is set to 'Enabled'
         "value" = "<enabled/>" +
 
-            # 3.11.7.2.11 (BL) Ensure 'Require additional authentication at startup: Allow BitLocker without a compatible TPM' is set to 'Enabled: False'
+            # 3.11.7.2.9 (BL) Ensure 'Require additional authentication at startup: Allow BitLocker without a compatible TPM' is set to 'Enabled: False'
             "<data id=`"ConfigureNonTPMStartupKeyUsage_Name`" value=`"false`"/>" +
 
-            # 3.11.7.2.12 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key and PIN:' is set to 'Enabled: Do not allow startup key and PIN with TPM'
+            # 4.11.7.2.10 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key and PIN:' is set to 'Enabled: Do not allow startup key and PIN with TPM'
             "<data id=`"ConfigureTPMPINKeyUsageDropDown_Name`" value=`"0`"/>" +
 
-            # 3.11.7.2.13 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key:' is set to 'Enabled: Do not allow startup key with TPM'
+            # 4.11.7.2.11 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key:' is set to 'Enabled: Do not allow startup key with TPM'
             "<data id=`"ConfigureTPMStartupKeyUsageDropDown_Name`" value=`"0`"/>" +
 
-            # 3.11.7.2.14 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup PIN:' is set to 'Enabled: Require startup PIN with TPM'
+            # 4.11.7.2.12 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup PIN:' is set to 'Enabled: Require startup PIN with TPM'
+            # Warning: If silent encryption is desired, this setting must be configured to "Do not allow startup PIN with TPM" and an exception to this recommendation will be needed. Please also see recommendation Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM' for needed configuration change for silent encryption.
             # Opposed: No startup pin. We accept the risk of dumping the memory contents. DMA mitigations have been enabled.
             "<data id=`"ConfigurePINUsageDropDown_Name`" value=`"0`"/>" +
 
-            # 3.11.7.2.15 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM'
+            # 4.11.7.2.13 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM'
             # Opposed: Will allow encryption using TPM only.
             "<data id=`"ConfigureTPMUsageDropDown_Name`" value=`"1`"/>"
     },
+    @{
+        # 4.11.7.2.14 (BL) Ensure 'Enforce drive encryption type on operating system drives: Select the encryption type: (Device)' is set to 'Enabled: Used Space Only encryption' or 'Enabled: Full encryption'
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.11.7.2.14"
+        "description" = "Implemented. Used spaced only encryption."
+
+        # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp?WT.mc_id=Portal-fx#systemdrivesencryptiontype
+        "omaUri" = "./Device/Vendor/MSFT/BitLocker/FixedDrivesEncryptionType"
+        "value" = "<enabled/><data id=`"FDVEncryptionTypeDropDown_Name`" value=`"2`"/>"
+    }
     ############################
-    # Removable Drives
+    # Removable Drives 4.11.7.3
     ############################
     @{
-         # 3.11.7.3.1 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled'
+         # 4.11.7.3.1 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled'
+         # 4.11.7.3.2 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker: Do not allow write access to devices configured in another organization' is set to 'Enabled: False'
          # Opposed: We will allow writing to removable drives that aren't encrypted.
         "@odata.type" = "#microsoft.graph.omaSettingString"
-        "displayName" = "3.11.7.3.1 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled'"
+        "displayName" = "4.11.7.3.1 and 4.11.7.3.2 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled' and (BL) Do not allow write access to devices configured in another organization' is set to 'Enabled: False'"
         "description" = "Opposed. Will allow write access to removable drives without encryption."
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/RemovableDrivesRequireEncryption"
         "value" = "<disabled/>"
     },
     ############################
-    # Non-CIS Configurations
+    # Encryption Methods 4.11.7.4 - 4.11.7.6
     ############################
     @{
          # Set the encryption method
@@ -162,26 +167,25 @@ $params = @{
         "description" = "Set secure encryption methods and trigger the encryption."
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/EncryptionMethodByDriveType"
         "value" = "<enabled/>" +
-            # OS Drive
-            "<data id=`"EncryptionMethodWithXtsOsDropDown_Name`" value=`"6`"/>" +
-
             # Fixed Drive
+            # 4.11.7.4 (BL) Ensure 'Choose drive encryption method and cipher strength (Windows 10 [Version 1511] and later): Select the encryption method for fixed data drives' is set to 'XTS-AES 128-bit (default)' or 'XTS-AES 256-bit'
             "<data id=`"EncryptionMethodWithXtsFdvDropDown_Name`" value=`"6`"/>" +
 
+            # OS Drive
+            # 4.11.7.5 (BL) Ensure 'Choose drive encryption method and cipher strength (Windows 10 [Version 1511] and later): Select the encryption method for operating system drives' is set to 'XTS-AES 128-bit (default)' or 'XTS-AES 256-bit'
+            "<data id=`"EncryptionMethodWithXtsOsDropDown_Name`" value=`"6`"/>" +
+
             # Removable Drive
+            # 4.11.7.6 (BL) Ensure 'Choose drive encryption method and cipher strength (Windows 10 [Version 1511] and later): Select the encryption method for removable data drives' is set to 'XTS-AES 128-bit' or higher
             "<data id=`"EncryptionMethodWithXtsRdvDropDown_Name`" value=`"6`"/>"
     },
+
+    ##########################
+    ## Bitlocker Enablement 8.1 - 8.3
+    ##########################
     @{
          # Allow/Require standard/non-admin user to encrypt after entra join. This makes encryption required and triggers the device to encrypt.
-         # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#allowstandarduserencryption
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "Allow standard user encryption"
-        "description" = "Allow users with non-admin to complete the Bitlocker encryption."
-        "omaUri" = "./Device/Vendor/MSFT/BitLocker/AllowStandardUserEncryption"
-        "value" = 1
-    },
-    @{
-         # Allow/Require standard/non-admin user to encrypt after entra join. This makes encryption required and triggers the device to encrypt.
+         # 8.1 (BL) Ensure 'Require Device Encryption' is set to 'Enabled'
          # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#requiredeviceencryption
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "Require Bitlocker Encryption"
@@ -191,12 +195,23 @@ $params = @{
     },
     @{
          # Silently encrypt drives without prompting
+         # 8.2 (BL) Ensure 'Allow Warning For Other Disk Encryption' is set to 'Disabled'
          # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#allowwarningforotherdiskencryption
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "Silently encrypt drives without warning."
         "description" = "Silently encryption without warning."
         "omaUri" = "./Device/Vendor/MSFT/BitLocker/AllowWarningForOtherDiskEncryption"
         "value" = 0
+    },
+    @{
+         # Allow/Require standard/non-admin user to encrypt after entra join. This makes encryption required and triggers the device to encrypt.
+         # 8.3 (BL) Ensure 'Allow Warning For Other Disk Encryption: Allow Standard User Encryption' is set to 'Enabled'
+         # https://learn.microsoft.com/en-us/windows/client-management/mdm/bitlocker-csp#allowstandarduserencryption
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "Allow standard user encryption"
+        "description" = "Allow users with non-admin to complete the Bitlocker encryption."
+        "omaUri" = "./Device/Vendor/MSFT/BitLocker/AllowStandardUserEncryption"
+        "value" = 1
     }
   )
 }
