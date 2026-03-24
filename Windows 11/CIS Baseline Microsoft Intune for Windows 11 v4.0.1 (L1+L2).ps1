@@ -1471,7 +1471,7 @@ $params = @{
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "26.6(L1) Ensure 'Device Password Enabled: Max Device Password Failed Attempts' is set to '5 or fewer failed attempt(s), but not 0'"
+        "displayName" = "26.6 (L1) Ensure 'Device Password Enabled: Max Device Password Failed Attempts' is set to '5 or fewer failed attempt(s), but not 0'"
         "description" = "Implemented. 5"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MaxDevicePasswordFailedAttempts"
         "value" = 5
