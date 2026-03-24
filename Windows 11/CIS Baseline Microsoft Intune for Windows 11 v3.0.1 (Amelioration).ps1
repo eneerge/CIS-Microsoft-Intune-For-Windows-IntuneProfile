@@ -1,8 +1,13 @@
 # Configuration
-$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v3.0.1 (Ameliorations)"
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (Ameliorations)"
 $intune_policy_description = "These settings are not defined in the CIS benchmark, but provide additional hardening/privacy configurations."
 $tenant_id = "" #Read-Host " "
-$webSignInAllowedUrls = "mydomain.com" # separate each url with a semicolon
+$webSignInAllowedUrls =  # separate each url with a semicolon
+  "https://login.microsoftonline.com;"
+ + "https://login.microsoft.com;"
+ + "https://aadcdn.msftauth.net;"
+ + "https://aadcdn.msauth.net;"
+ + "https://secure.aadcdn.microsoftonline-p.com"
 
 # End Config
 ############
@@ -55,18 +60,18 @@ $params = @{
     @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-Search?WT.mc_id=Portal-fx#preventremotequeries
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "Windows Search - AllowUsingDiacritics"
-        "description" = "This policy setting allows words that contain diacritic characters to be treated as separate words."
+        "displayName" = "Windows Search - Prevent Remote Queries"
+        "description" = "If enabled, clients will be unable to query this computer's index remotely. Thus, when they're browsing network shares that are stored on this computer, they won't search them using the index. If disabled, client search requests will use this computer's index."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Search/PreventRemoteQueries"
         "value" = 0
     },
     @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-Search?WT.mc_id=Portal-fx#allowusingdiacritics
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "Windows Search - Prevent Remote Queries"
-        "description" = "If enabled, clients will be unable to query this computer's index remotely. Thus, when they're browsing network shares that are stored on this computer, they won't search them using the index. If disabled, client search requests will use this computer's index."
+        "displayName" = "Windows Search - AllowUsingDiacritics"
+        "description" = "This policy setting allows words that contain diacritic characters to be treated as separate words."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Search/AllowUsingDiacritics"
-        "value" = 0
+        "value" = 1
     },
     @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-dnsclient#dns_smartmultihomednameresolution
@@ -80,7 +85,7 @@ $params = @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-desktop#nowindowminimizingshortcuts
         "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "Desktop - Disable Aero Shake"
-        "description" = "Prevents windows from being minimized or restored when the active window is shaken back and forth with the mouse."
+        "description" = "Prevents windows from (annoyingly) being minimized or restored when the active window is shaken back and forth with the mouse."
         "omaUri" = "./User/Vendor/MSFT/Policy/Config/ADMX_Desktop/NoWindowMinimizingShortcuts"
         "value" = "<disabled/>"
     },
@@ -165,14 +170,6 @@ $params = @{
         "value" = "Central Standard Time"
     },
     @{
-        # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-Browser?WT.mc_id=Portal-fx#configuretelemetryformicrosoft365analytics
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "Browser - Configure Telemetry For Microsoft 365 Analytics to 'No data collected or sent'"
-        "description" = "If disabled or not configured, Microsoft Edge doesn't send browsing history data to Desktop Analytics."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/ConfigureTelemetryForMicrosoft365Analytics"
-        "value" = 0
-    },
-    @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-Browser?WT.mc_id=Portal-fx#enableextendedbookstelemetry
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "Browser - Disable Extended Books Telemetry"
@@ -180,14 +177,14 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/EnableExtendedBooksTelemetry"
         "value" = 0
     },
-    <#@{ # This configuration is only valid for Windows Insider and is not currently applicable to production builds of Windows 11
+    @{ # This configuration is only valid for Windows Insider and is not currently applicable to production builds of Windows 11
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-windowsai#disableaidataanalysis
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "Windows AI - Disable Windows Recall"
         "description" = "This policy setting allows you to determine whether end users have the option to allow snapshots to be saved on their PCs."
         "omaUri" = "./User/Vendor/MSFT/Policy/Config/WindowsAI/DisableAIDataAnalysis"
         "value" = 1
-    },#>
+    },
     @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-windowsai#turnoffwindowscopilot
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -195,14 +192,6 @@ $params = @{
         "description" = "This policy setting allows you to turn off Windows Copilot."
         "omaUri" = "./User/Vendor/MSFT/Policy/Config/WindowsAI/TurnOffWindowsCopilot"
         "value" = 1
-    },
-    @{
-        # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-experience#configurechaticon
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "Windows Taskbar - Hide Chat Icon"
-        "description" = "This policy setting allows you to configure the Chat icon on the taskbar."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Experience/ConfigureChatIcon"
-        "value" = 2
     },
     @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-update#allowmuupdateservice
