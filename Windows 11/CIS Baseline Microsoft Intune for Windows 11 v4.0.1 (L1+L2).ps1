@@ -277,7 +277,7 @@ $params = @{
         "displayName" = "4.7.2 (L1) Ensure 'Configure Redirection Guard: Redirection Guard Options' is set to 'Enabled: Redirection Guard Enabled'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureRedirectionGuardPolicy"
-        "value" = "<enabled/>"
+        "value" = "<enabled/>`n<data id=`"RedirectionGuardPolicy_Enum`" value=`"1`"/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -1006,14 +1006,14 @@ $params = @{
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.54.1 (L1) Ensure 'Turn on PowerShell Script Block Logging' is set to 'Enabled'"
+          "displayName" = "4.11.54.1 (L2) Ensure 'Turn on PowerShell Script Block Logging' is set to 'Enabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WindowsPowerShell/TurnOnPowerShellScriptBlockLogging"
           "value" = "<enabled/>`n<data id=`"EnableScriptBlockInvocationLogging`" value=`"true`"/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
-          "displayName" = "4.11.54.2 (L1) Ensure 'Turn on PowerShell Transcription' is set to 'Enabled'"
+          "displayName" = "4.11.54.2 (L2) Ensure 'Turn on PowerShell Transcription' is set to 'Enabled'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_PowerShellExecutionPolicy/EnableTranscripting"
           "value" = "<enabled/><data id=`"OutputDirectory`" value=`"`"/>`n<data id=`"EnableInvocationHeader`" value=`"false`"/>"
@@ -1782,13 +1782,13 @@ $params = @{
     },
 
     # Intune is currently unable to apply this to Windows 11 devices (errors when applying). Policy will be set in another configration.
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "49.11 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_SmartCardRemovalBehavior"
-        "value" = 3
-    },
+    # @{
+    #     "@odata.type" = "#microsoft.graph.omaSettingInteger"
+    #     "displayName" = "49.11 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher"
+    #     "description" = "Implemented"
+    #     "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_SmartCardRemovalBehavior"
+    #     "value" = 3
+    # },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "49.12 (L1) Ensure 'Microsoft network client: Digitally sign communications (always)' is set to 'Enabled'"
@@ -2057,13 +2057,15 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Privacy/DisableAdvertisingID"
         "value" = 1
     },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "68.4 (L1) Ensure 'Let Apps Activate With Voice Above Lock' is set to 'Enabled: Force Deny'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Privacy/LetAppsActivateWithVoiceAboveLock"
-        "value" = 2
-    },
+
+    # 68.4 Can not be set by omauri. It errors out.
+    # @{
+    #     "@odata.type" = "#microsoft.graph.omaSettingInteger"
+    #     "displayName" = "68.4 (L1) Ensure 'Let Apps Activate With Voice Above Lock' is set to 'Enabled: Force Deny'"
+    #     "description" = "Implemented"
+    #     "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Privacy/LetAppsActivateWithVoiceAboveLock"
+    #     "value" = 2
+    # },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "68.5 (L2) Ensure 'Upload User Activities' is set to 'Disabled'"
@@ -2395,7 +2397,7 @@ $params = @{
         "description" = "Implemented. 8"
         "omaUri" = "./Device/Vendor/MSFT/LAPS/Policies/PostAuthenticationResetDelay"
         "value" = 8
-    },
+    }
   )
 }
 
