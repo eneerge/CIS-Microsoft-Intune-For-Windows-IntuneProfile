@@ -2,8 +2,9 @@
 $tenant_id = "" #Read-Host " "
 $logon_title = "Login"
 $logon_message = "This computer system is managed by Acme, Inc. Access is hereby granted for authorized use only. By using this system, you acknowledge notice and acceptance of the Acme Acceptable Use Policy."
-$intune_policy_name = "CIS - Baseline Microsoft Intune for Windows 11 v4.0.0 (L1+L2)"
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (L1+L2)"
 $intune_policy_description = "Primary CIS Baseline Policy implemented using OMAURI."
+$useDeviceCodeAuth = $false # Set this to $true if you receive permission errors. These errors may occur if your PIM tokens aren't elevated properly after activating a PIM role.
 
 # End Config
 ############
@@ -2401,18 +2402,20 @@ $params = @{
   )
 }
 
-Write-Host "Connecting to Microsoft Graph..."
-try {
-  Connect-MgGraph -NoWelcome -Scopes "DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All" -ErrorAction Stop
-
-  # Uncomment this and comment out the above line if you have permission issues writing the configuration
-  #Connect-MgGraph -NoWelcome -UseDeviceCode -Scopes "DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All" -ErrorAction Stop
-
-  Write-Host "Connected."
+Write-Host -ForegroundColor Cyan -BackgroundColor Black "Connecting to Microsoft Graph..."
+if ($useDeviceCodeAuth -eq $false) {     
+  Connect-MgGraph -NoWelcome -ContextScope Process -Scopes "DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All" -ErrorVariable mgConnectError -ErrorAction SilentlyContinue
 }
-catch {
-    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $_.ToString()
-    Write-Host -ForegroundColor Red -BackgroundColor Black $_.ScriptStackTrace
+else {
+  Connect-MgGraph -NoWelcome  -ContextScope Process -UseDeviceCode -Scopes "DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All" -ErrorVariable mgConnectError -ErrorAction SilentlyContinue
+}
+if ($mgConnectError) {
+    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $mgConnectError.Exception.Message
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black $mgConnectError.Exception.StackTrace
+    return 1
+}
+else {
+  Write-Host -ForegroundColor Green -BackgroundColor Black "Connected."
 }
 
 $Context = Get-MgContext
@@ -2421,18 +2424,9 @@ if ($null -eq $Context) {
     return 1
 }
 
-Write-Host "Writing Config to Intune..."
+Write-Host -ForegroundColor Cyan -BackgroundColor Black "Writing Config to Intune..."
 
-try {
-    $out = New-MgDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction Continue
-    Write-Host -ForegroundColor Green -BackgroundColor Black "Configuration has been written to Intune. You will need to assign your configuration to groups/devices before it will apply."
-    $out
-  }
-catch {
-    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $_.ToString()
-    Write-Host -ForegroundColor Red -BackgroundColor Black $_.ScriptStackTrace
-    return 1
-}
+New-MgDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction SilentlyContinue
 
 if ($newConfigError) {
     Write-Host -ForegroundColor Red -BackgroundColor Black $newConfigError
@@ -2440,9 +2434,12 @@ if ($newConfigError) {
     Write-Host -ForegroundColor Cyan -BackgroundColor Black "Tips: "
     Write-Host -ForegroundColor Cyan -BackgroundColor Black "- Make sure you are authenticating with a user who has Intune permission."
     Write-Host -ForegroundColor Cyan -BackgroundColor Black "- If you are using PIM, be sure to activate the Intune Administrator role."
-    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- PIM may be reusing stale cache. You should try either using a different user account or try adding -UseDeviceCode to the Connect-MgGraph statement in this script. Uncomment line 2409."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- PIM may be reusing stale cache. Try setting `$useDeviceCodeAuth at the top of this script to `$true"
     Disconnect-MGGraph | Out-Null
     return 1
+}
+else {
+    Write-Host -ForegroundColor Green -BackgroundColor Black "Configuration has been written to Intune. You will need to assign your configuration to groups/devices before it will apply."
 }
 
 Disconnect-MGGraph | Out-Null

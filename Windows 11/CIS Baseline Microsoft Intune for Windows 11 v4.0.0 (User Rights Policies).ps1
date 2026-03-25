@@ -1,6 +1,7 @@
 ﻿# Configuration
-$intune_policy_name = "[test] CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (User Rights Policies)"
+$intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (User Rights Policies)"
 $intune_policy_description = "These policies apply User Rights Policies mapped to CIS 89.1 to 89.35"
+$useDeviceCodeAuth = $false # Set this to $true if you receive permission errors. These errors may occur if your PIM tokens aren't elevated properly after activating a PIM role.
 
 # End Config
 ############
@@ -278,14 +279,20 @@ $params = @{
     }
 }
 
-Write-Host "Connecting to Microsoft Graph..."
-try {
-  Connect-MgGraph -NoWelcome -Scopes "DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All" -ErrorAction Stop
-  Write-Host "Connected."
+Write-Host -ForegroundColor Cyan -BackgroundColor Black "Connecting to Microsoft Graph..."
+if ($useDeviceCodeAuth -eq $false) {     
+  Connect-MgGraph -NoWelcome -ContextScope Process -Scopes "DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All" -ErrorVariable mgConnectError -ErrorAction SilentlyContinue
 }
-catch {
-    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $_.ToString()
-    Write-Host -ForegroundColor Red -BackgroundColor Black $_.ScriptStackTrace
+else {
+  Connect-MgGraph -NoWelcome  -ContextScope Process -UseDeviceCode -Scopes "DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All" -ErrorVariable mgConnectError -ErrorAction SilentlyContinue
+}
+if ($mgConnectError) {
+    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $mgConnectError.Exception.Message
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black $mgConnectError.Exception.StackTrace
+    return 1
+}
+else {
+  Write-Host -ForegroundColor Green -BackgroundColor Black "Connected."
 }
 
 $Context = Get-MgContext
@@ -294,27 +301,22 @@ if ($null -eq $Context) {
     return 1
 }
 
-Write-Host "Writing Config to Intune..."
+Write-Host -ForegroundColor Cyan -BackgroundColor Black "Writing Config to Intune..."
 
-try {
-  $out = New-MgBetaDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction SilentlyContinue
-  Write-Host -ForegroundColor Green -BackgroundColor Black "Configuration has been written to Intune. You will need to assign your configuration to groups/devices before it will apply."
-  $out
-}
-catch {
-    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $_.ToString()
-    Write-Host -ForegroundColor Red -BackgroundColor Black $_.ScriptStackTrace
-    return 1
-}
+New-MgBetaDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction SilentlyContinue
 
 if ($newConfigError) {
     Write-Host -ForegroundColor Red -BackgroundColor Black $newConfigError
-    Write-Host -ForegroundColor Red -BackgroundColor Black "There was an error writing the configuration."
-    Write-Host -ForegroundColor Magenta -BackgroundColor Black "Tips: "
-    Write-Host -ForegroundColor Magenta -BackgroundColor Black "- Make sure you are authenticating with a user who has Intune permission."
-    Write-Host -ForegroundColor Magenta -BackgroundColor Black "- If you are using PIM, be sure to activate the Intune Administrator role."
+    Write-Host -ForegroundColor Yellow -BackgroundColor Black "There was an error writing the configuration."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "Tips: "
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- Make sure you are authenticating with a user who has Intune permission."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- If you are using PIM, be sure to activate the Intune Administrator role."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- PIM may be reusing stale cache. Try setting `$useDeviceCodeAuth at the top of this script to `$true"
     Disconnect-MGGraph | Out-Null
     return 1
-  }
+}
+else {
+    Write-Host -ForegroundColor Green -BackgroundColor Black "Configuration has been written to Intune. You will need to assign your configuration to groups/devices before it will apply."
+}
 
 Disconnect-MGGraph | Out-Null

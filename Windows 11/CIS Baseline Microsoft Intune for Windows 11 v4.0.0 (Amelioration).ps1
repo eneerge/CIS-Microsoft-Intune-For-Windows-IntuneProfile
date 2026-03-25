@@ -1,27 +1,19 @@
 # Configuration
 $intune_policy_name = "CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (Ameliorations)"
 $intune_policy_description = "These settings are not defined in the CIS benchmark, but provide additional hardening/privacy configurations."
-$tenant_id = "" #Read-Host " "
-$webSignInAllowedUrls =  # separate each url with a semicolon
-  "https://login.microsoftonline.com;"
- + "https://login.microsoft.com;"
- + "https://aadcdn.msftauth.net;"
- + "https://aadcdn.msauth.net;"
- + "https://secure.aadcdn.microsoftonline-p.com"
+$webSignInAllowedUrls = @(
+    'https://login.microsoftonline.com'
+    'https://login.microsoft.com'
+    'https://aadcdn.msftauth.net'
+    'https://aadcdn.msauth.net'
+    'https://secure.aadcdn.microsoftonline-p.com'
+) -join ';'
+
+$useDeviceCodeAuth = $false # Set this to $true if you receive permission errors. These errors may occur if your PIM tokens aren't elevated properly after activating a PIM role.
 
 # End Config
 ############
 Import-Module Microsoft.Graph.Beta.DeviceManagement
-
-if ($tenant_id -eq "") {
-  Write-Host "Please configure your Azure tenant id."
-  return 1
-}
-
-if ($tenant_id -eq "mydomain.com") {
-    Write-Host "Set your web signin domain."
-    return 1
-  }
 
 $params = @{
   "@odata.type" = "#microsoft.graph.windows10CustomConfiguration"
@@ -204,5 +196,44 @@ $params = @{
   )
 }
 
-Connect-MgGraph
-New-MgBetaDeviceManagementDeviceConfiguration -BodyParameter $params
+Write-Host -ForegroundColor Cyan -BackgroundColor Black "Connecting to Microsoft Graph..."
+if ($useDeviceCodeAuth -eq $false) {     
+  Connect-MgGraph -NoWelcome -ContextScope Process -Scopes "DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All" -ErrorVariable mgConnectError -ErrorAction SilentlyContinue
+}
+else {
+  Connect-MgGraph -NoWelcome  -ContextScope Process -UseDeviceCode -Scopes "DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All" -ErrorVariable mgConnectError -ErrorAction SilentlyContinue
+}
+if ($mgConnectError) {
+    Write-Host -ForegroundColor Red -BackgroundColor Black "ERROR: " $mgConnectError.Exception.Message
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black $mgConnectError.Exception.StackTrace
+    return 1
+}
+else {
+  Write-Host -ForegroundColor Green -BackgroundColor Black "Connected."
+}
+
+$Context = Get-MgContext
+if ($null -eq $Context) {
+    Write-Host -ForegroundColor Red -BackgroundColor Black "There was an error connecting to Intune."
+    return 1
+}
+
+Write-Host -ForegroundColor Cyan -BackgroundColor Black "Writing Config to Intune..."
+
+New-MgBetaDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction SilentlyContinue
+
+if ($newConfigError) {
+    Write-Host -ForegroundColor Red -BackgroundColor Black $newConfigError
+    Write-Host -ForegroundColor Yellow -BackgroundColor Black "There was an error writing the configuration."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "Tips: "
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- Make sure you are authenticating with a user who has Intune permission."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- If you are using PIM, be sure to activate the Intune Administrator role."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- PIM may be reusing stale cache. Try setting `$useDeviceCodeAuth at the top of this script to `$true"
+    Disconnect-MGGraph | Out-Null
+    return 1
+}
+else {
+    Write-Host -ForegroundColor Green -BackgroundColor Black "Configuration has been written to Intune. You will need to assign your configuration to groups/devices before it will apply."
+}
+
+Disconnect-MGGraph | Out-Null
