@@ -2404,6 +2404,10 @@ $params = @{
 Write-Host "Connecting to Microsoft Graph..."
 try {
   Connect-MgGraph -NoWelcome -Scopes "DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All" -ErrorAction Stop
+
+  # Uncomment this and comment out the above line if you have permission issues writing the configuration
+  #Connect-MgGraph -NoWelcome -UseDeviceCode -Scopes "DeviceManagementManagedDevices.Read.All, DeviceManagementManagedDevices.ReadWrite.All, DeviceManagementConfiguration.ReadWrite.All, DeviceManagementConfiguration.Read.All" -ErrorAction Stop
+
   Write-Host "Connected."
 }
 catch {
@@ -2420,7 +2424,7 @@ if ($null -eq $Context) {
 Write-Host "Writing Config to Intune..."
 
 try {
-    $out = New-MgDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction SilentlyContinue
+    $out = New-MgDeviceManagementDeviceConfiguration -BodyParameter $params -ErrorVariable newConfigError -ErrorAction Continue
     Write-Host -ForegroundColor Green -BackgroundColor Black "Configuration has been written to Intune. You will need to assign your configuration to groups/devices before it will apply."
     $out
   }
@@ -2432,10 +2436,11 @@ catch {
 
 if ($newConfigError) {
     Write-Host -ForegroundColor Red -BackgroundColor Black $newConfigError
-    Write-Host -ForegroundColor Red -BackgroundColor Black "There was an error writing the configuration."
-    Write-Host -ForegroundColor Magenta -BackgroundColor Black "Tips: "
-    Write-Host -ForegroundColor Magenta -BackgroundColor Black "- Make sure you are authenticating with a user who has Intune permission."
-    Write-Host -ForegroundColor Magenta -BackgroundColor Black "- If you are using PIM, be sure to activate the Intune Administrator role."
+    Write-Host -ForegroundColor Yellow -BackgroundColor Black "There was an error writing the configuration."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "Tips: "
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- Make sure you are authenticating with a user who has Intune permission."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- If you are using PIM, be sure to activate the Intune Administrator role."
+    Write-Host -ForegroundColor Cyan -BackgroundColor Black "- PIM may be reusing stale cache. You should try either using a different user account or try adding -UseDeviceCode to the Connect-MgGraph statement in this script. Uncomment line 2409."
     Disconnect-MGGraph | Out-Null
     return 1
 }
