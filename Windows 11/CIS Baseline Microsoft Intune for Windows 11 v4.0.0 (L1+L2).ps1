@@ -236,7 +236,7 @@ $params = @{
         "displayName" = "4.6.11.1 (L1) Ensure 'Hardened UNC Paths' is set to 'Enabled, with `"Require Mutual Authentication`" and `"Require Integrity`" set for all NETLOGON and SYSVOL shares'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Connectivity/HardenedUNCPaths"
-        "value" = "<enabled/><data id=`"Pol_HardenedPaths`" value=`"\\*\NETLOGON$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1$([char]0xF000)\\*\SYSVOL$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1`"/>"
+        "value" = "<enabled/><data id=`"Pol_HardenedPaths`" value=`"\\*\NETLOGON$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1$([char]0xF000)\\*\SYSVOL$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1`"/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -285,7 +285,7 @@ $params = @{
         "displayName" = "4.7.3, 4.7.4 (L1) Ensure 'Configure RPC connection settings: Protocol to use for outgoing RPC connections' is set to 'Enabled: RPC over TCP' and (L1) Ensure 'Configure RPC connection settings: Use authentication for outgoing RPC connections' is set to 'Enabled: Default'"
         "description" = "Implemented."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Printers/ConfigureRpcConnectionPolicy"
-        "value" = "<enabled/>`n<data id=`"RpcConnectionProtocol_Enum`" value=`"0`"/>`n<data id=`"RpcConnectionAuthentication_Enum`" value=`"1`"/>"
+        "value" = "<enabled/>`n<data id=`"RpcConnectionProtocol_Enum`" value=`"0`"/>`n<data id=`"RpcConnectionAuthentication_Enum`" value=`"0`"/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -745,48 +745,46 @@ $params = @{
           "value" = "<enabled/><data id=`"Channel_LogMaxSize`" value=`"204800`"/>"
     },
     @{
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "4.11.18.1-1 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_WindowsExplorer/EnableSmartScreen"
+        "value" = "<enabled/><data id=`"EnableSmartScreenDropdown`" value=`"Block`"/>"
+    },
+    @{
           "@odata.type" = "#microsoft.graph.omaSettingInteger"
-          "displayName" = "4.11.18.1-1 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
+          "displayName" = "4.11.18.1-2 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
           "description" = "Implemented. Enables Smartscreen."
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/SmartScreen/EnableSmartScreenInShell"
           "value" = 1
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingInteger"
-          "displayName" = "4.11.18.1-2 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
+          "displayName" = "4.11.18.1-3 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
           "description" = "Implemented. Prevents overriding SmartScreen."
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/SmartScreen/PreventOverrideForFilesInShell"
           "value" = 1
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingInteger"
-          "displayName" = "4.11.18.1-3 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
+          "displayName" = "4.11.18.1-4 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
           "description" = "Implemented. Enable Smartscreen in Browser."
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/AllowSmartScreen"
           "value" = 1
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingInteger"
-          "displayName" = "4.11.18.1-4 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
+          "displayName" = "4.11.18.1-5 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
           "description" = "Implemented. Prevent overriding SmartScreen in Browser"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/PreventSmartScreenPromptOverride"
           "value" = 1
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingInteger"
-          "displayName" = "4.11.18.1-5 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
+          "displayName" = "4.11.18.1-6 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/PreventSmartScreenPromptOverrideForFiles"
           "value" = 1
     },
-    # This ADMX backed policy is redundant. The Smartscreen and Browser policies above supercede it.
-    # @{
-    #       "@odata.type" = "#microsoft.graph.omaSettingString"
-    #       "displayName" = "4.11.18.1 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'"
-    #       "description" = "Implemented"
-    #       "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_WindowsExplorer/EnableSmartScreen"
-    #       "value" = "<enabled/>"
-    # },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.18.2 (L1) Ensure 'Turn off Data Execution Prevention for Explorer' is set to 'Disabled'"
@@ -924,9 +922,10 @@ $params = @{
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.36.4.9.4 (L1) Ensure 'Require user authentication for remote connections by using Network Level Authentication' is set to 'Enabled'"
-          "description" = "Opposed. When using Hello Pin, NLA won't work. RDP will only be allowed through an MFA enabled RMM gateway which will achieve similar security as NLA without breaking RDP. RDP is disabled for most devices by policy, also."
+          "description" = "Implemented"
+          #"description" = "Opposed. When using Hello Pin, NLA won't work. RDP will only be allowed through an MFA enabled RMM gateway which will achieve similar security as NLA without breaking RDP. RDP is disabled for most devices by policy, also."
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_TerminalServer/TS_USER_AUTHENTICATION_POLICY"
-          "value" = "<disabled/>"
+          "value" = "<enabled/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -1272,20 +1271,9 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Camera/AllowCamera"
         "value" = 1
     },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingBoolean"
-        "displayName" = "15.1 (L1) Ensure 'Config refresh' is set to 'Enabled'"
-        "description" = "Implemented"
-        "omaUri" = "./Device/Vendor/MSFT/DMClient/Provider/MS DM Server/ConfigRefresh/Enabled"
-        "value" = $true
-    },
-    @{
-        "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "15.2 (L1) Config refresh cadence"
-        "description" = "Implemented. 90 minutes"
-        "omaUri" = "./Device/Vendor/MSFT/DMClient/Provider/MS DM Server/ConfigRefresh/Cadence"
-        "value" = 90
-    },
+
+    #15.1 and 15.2 must be set in a Settings Catalog policy. OMAURI does not work.
+
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "22.1 (L1) Ensure 'Allow Behavior Monitoring' is set to 'Allowed'"
@@ -1439,22 +1427,23 @@ $params = @{
         "displayName" = "26.1 (L1) Ensure 'Device Password Enabled' is set to 'Enabled'"
         "description" = "Must be set to apply CIS requirements 26.2, 26.3, 26.8"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/DevicePasswordEnabled"
-        "value" = 1
+        "value" = 0
+        #"value" = 1 # CIS recommendation for v4.0.0, but if this value is 1, that means it is disabled. Microsoft naming is great.
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "26.2 (L1) Ensure 'Alphanumeric Device Password Required' is set to 'Password, Numeric PIN, or Alphanumeric PIN required'"
-        "description" = "Implemented."
+        "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/AlphanumericDevicePasswordRequired"
-        "value" = 2
+        "value" = 0
     },
     # This configuration option is set by Intune, but is not used if Windows Hello for Business is being used. This results in audit failure. CIS does not have a recommendation for PIN complexity for Windows Hello. Additionally, I prefer all numerical for PINs when using WHfB.
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
-        "displayName" = "26.3 (L1) Ensure 'Min Device Password Complex Characters' is set to 'Digits lowercase letters and uppercase letters are required'"
+        "displayName" = "26.3 (L1) Ensure 'Device Password Enabled: Min Device Password Complex Characters' is set to 'Digits and lowercase letters are required'"
         "description" = "Implemented."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MinDevicePasswordComplexCharacters"
-        "value" = 3
+        "value" = 2
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -1470,6 +1459,13 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/DevicePasswordHistory"
         "value" = 0
     },
+
+    # This policy has different behaviors on the mobile device and desktop. On a mobile device, when the user reaches the value set by this policy, 
+    # then the device is wiped. On a desktop, when the user reaches the value set by this policy, it isn't wiped. Instead, the desktop is put on
+    # BitLocker recovery mode, which makes the data inaccessible but recoverable. If BitLocker isn't enabled, then the policy can't be enforced.
+    # Prior to reaching the failed attempts limit, the user is sent to the lock screen and warned that more failed attempts will lock their computer.
+    # When the user reaches the limit, the device automatically reboots and shows the BitLocker recovery page. This page prompts the user for the
+    # BitLocker recovery key. Most secure value is 0 if all policy values = 0; otherwise, Min policy value is the most secure value.
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "26.6 (L1) Ensure 'Device Password Enabled: Max Device Password Failed Attempts' is set to '5 or fewer failed attempt(s), but not 0'"
@@ -1998,9 +1994,9 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "55.4 (L1) Ensure 'Block Non Admin User Install' is set to 'Allow'"
-        "description" = "Opposed. Enabling interferes with SSPR and we want to allow store installs."
+        "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/BlockNonAdminUserInstall"
-        "value" = 0
+        "value" = 1
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
@@ -2374,9 +2370,9 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "105.3 (L1) LAPS: Ensure 'Password Complexity' is set to 'Large letters + small letters + numbers + special characters'"
-        "description" = "Implemented. Improved readability setting."
+        "description" = "Implemented."
         "omaUri" = "./Device/Vendor/MSFT/LAPS/Policies/PasswordComplexity"
-        "value" = 5
+        "value" = 4
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"

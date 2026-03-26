@@ -26,6 +26,15 @@ $params = @{
   version = 20260324
   omaSettings = @(
     @{
+        # https://learn.microsoft.com/en-us/windows/client-management/mdm/defender-csp#configurationtamperprotection
+        # Note: Will be overridden by MDE setting.
+        "@odata.type" = "#microsoft.graph.omaSettingString"
+        "displayName" = "Windows Defender - Enable Tamper Protection"
+        "description" = "Enable Tamper Protection to prevent malware, users, and other software from disabling security features."
+        "omaUri" = "./Device/Vendor/MSFT/Defender/Configuration/TamperProtection"
+        "value" = "<enabled/>"
+    },
+    @{
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-search#configuresearchontaskbarmode
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "Windows Search - Appearance In Taskbar"

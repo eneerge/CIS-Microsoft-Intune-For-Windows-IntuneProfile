@@ -37,6 +37,13 @@ $params = @{
   omaSettings = @(
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "26.7 (L1) Ensure 'Device Password Enabled: Max Inactivity Time Device Lock' is set to '15 or fewer minutes, but not 0'"
+        "description" = "Implemented"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/MaxInactivityTimeDeviceLock"
+        "value" = 10
+    },
+    @{
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "45.9 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0' (Automated)"
         "description" = "Implemented. 600 seconds (10 minutes)"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_MachineInactivityLimit"
