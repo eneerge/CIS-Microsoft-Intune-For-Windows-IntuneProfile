@@ -1272,7 +1272,7 @@ $params = @{
         "value" = 1
     },
 
-    #15.1 and 15.2 must be set in a Settings Catalog policy. OMAURI does not work.
+    #15.1 Config refresh and 15.2 Refresh Cadence must be set in a Settings Catalog policy. OMAURI does not work.
 
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
