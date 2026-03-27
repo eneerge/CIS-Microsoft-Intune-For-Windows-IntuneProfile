@@ -206,7 +206,7 @@ $params = @{
         state             = "allowed"
         localUsersOrGroups = @()
     }
-    # 89.24 (L2) Ensure 'Log On As Batch Job' is set to 'Administrators' - There is no configuration option in Intune for this configuration profile type.
+    # 89.24 set in Non OMAURI configuration.
 
     # 89.25
     userRightsManageAuditingAndSecurityLogs = @{

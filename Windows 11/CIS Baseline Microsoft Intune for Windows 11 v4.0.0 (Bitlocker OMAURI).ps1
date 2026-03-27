@@ -59,7 +59,7 @@ $params = @{
             "<data id=`"FDVActiveDirectoryBackupDropDown_Name`" value=`"1`"/>" +
 
             # 4.11.7.1.6 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for fixed data drives' is set to 'Enabled: False' 
-            # Opposed: We do not want to enable Bitlocker until all key informaiton has been backed up to prevent data loss.
+            # Opposed: We do not want to enable Bitlocker until all key information has been backed up to prevent data loss.
             "<data id=`"FDVRequireActiveDirectoryBackup_Name`" value=`"true`"/>" +
 
             # 4.11.7.1.7 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True' 
@@ -131,7 +131,7 @@ $params = @{
             "<data id=`"ConfigurePINUsageDropDown_Name`" value=`"0`"/>" +
 
             # 4.11.7.2.13 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM'
-            # Opposed: Will allow encryption using TPM only.
+            # Opposed: Will allow encryption using TPM only so that silent encryption can be enabled.
             "<data id=`"ConfigureTPMUsageDropDown_Name`" value=`"1`"/>"
     },
     @{
@@ -150,7 +150,7 @@ $params = @{
     @{
          # 4.11.7.3.1 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled'
          # 4.11.7.3.2 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker: Do not allow write access to devices configured in another organization' is set to 'Enabled: False'
-         # Opposed: We will allow writing to removable drives that aren't encrypted.
+         # Opposed: We will allow writing to removable drives (such as flash drives) that aren't encrypted.
         "@odata.type" = "#microsoft.graph.omaSettingString"
         "displayName" = "4.11.7.3.1 and 4.11.7.3.2 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled' and (BL) Do not allow write access to devices configured in another organization' is set to 'Enabled: False'"
         "description" = "Opposed. Will allow write access to removable drives without encryption."

@@ -357,6 +357,19 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceInstallation/PreventDeviceMetadataFromNetwork"
         "value" = "<enabled/>"
     },
+
+    # 4.10.9.1.1 (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes' is set to 'Enabled'
+    # Opposed: CIS recommendations includes blocking 1394 and Thunderbolt devices. This would break functionality with a lot of devices. Additionally, Microsoft has implemented kernel level DMA protection for newer
+    #          builds of Windows 11, which all of our devices are on. We will not implement this due to the breaking functionality and the reduced risk provided by Microsoft's kernel protection.
+    #          https://support.microsoft.com/en-us/topic/blocking-the-sbp-2-driver-and-thunderbolt-controllers-to-reduce-1394-dma-and-thunderbolt-dma-threats-to-bitlocker-bf0ef10b-f563-5cfc-9740-8340b1d86a0c
+
+    # 4.10.9.1.2(BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Also apply to matching devices that are already installed.' is set to 'True' (checked)
+    # Opposed: This configuration goes along with the previous. It blocks access to several device classes. We do not want to do this and accept the limited risk.
+
+    # 4.10.9.1.3(BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Prevent installation of devices using drivers for these device setup' is set to 'IEEE 1394 device setup classes'
+    # Opposed: It blocks access to several device classes. We do not want to do this and accept the limited risk.
+
+
     # todo: add 4.10.9.1.1 to 4.10.9.1.3  https://workbench.cisecurity.org/benchmarks/21719/sections/3348645   
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -896,7 +909,7 @@ $params = @{
           "displayName" = "4.11.36.4.3.5 (L2) Ensure 'Restrict clipboard transfer from server to client' is set to 'Enabled: Disable clipboard transfers from server to client'"
           "description" = "Implemented"
           "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_TerminalServer/TS_CLIENT_CLIPBOARD"
-          "value" = "<enabled/>"
+          "value" = "<enabled/>`n<data id=`"TS_SC_CLIPBOARD_RESTRICTION_Text`" value=`"0`"/>"
     },
     @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -1750,7 +1763,7 @@ $params = @{
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "49.7 (L1) Ensure 'Interactive logon: Do not require CTRL+ALT+DEL' is set to 'Disabled'"
-        "description" = "Opposed: We will not require users to ctrl+alt+del."
+        "description" = "Opposed: We will not require users to ctrl+alt+del. It doesn't really provide additional security but may make users feel like the computer is frozen. Most users are used to hitting any button to bring up the user/pass prompt."
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/LocalPoliciesSecurityOptions/InteractiveLogon_DoNotRequireCTRLALTDEL"
         "value" = 1
     },

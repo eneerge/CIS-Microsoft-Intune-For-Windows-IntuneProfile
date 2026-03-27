@@ -54,7 +54,7 @@ $policyParams = @{
                                 "settingDefinitionId" = "device_vendor_msft_dmclient_provider_{providerid}_configrefresh_cadence"
                                 "simpleSettingValue" = @{
                                     "@odata.type" = "#microsoft.graph.deviceManagementConfigurationIntegerSettingValue"
-                                    "value" = 90
+                                    "value" = 89
                                 }
                             }
                         )
@@ -91,7 +91,7 @@ $policyParams = @{
             }
         },
 
-        # 89.15(L1) Ensure 'Deny Log On As Batch Job' to include 'Guests'
+        # 89.15 (L1) Ensure 'Deny Log On As Batch Job' to include 'Guests'
         @{
             "@odata.type" = "#microsoft.graph.deviceManagementConfigurationSetting"
             "settingInstance" = @{
@@ -106,7 +106,7 @@ $policyParams = @{
             }
         },
 
-        # 89.16(L1) Ensure 'Deny Log On As Service Job' to include 'Guests'
+        # 89.16 (L1) Ensure 'Deny Log On As Service Job' to include 'Guests'
         @{
             "@odata.type" = "#microsoft.graph.deviceManagementConfigurationSetting"
             "settingInstance" = @{
@@ -121,7 +121,23 @@ $policyParams = @{
             }
         },
 
-        # 89.34(L1) Ensure 'Shut Down The System' is set to 'Administrators, Users'
+
+        # 89.24 (L2) Ensure 'Log On As Batch Job' is set to 'Administrators'
+        @{
+            "@odata.type" = "#microsoft.graph.deviceManagementConfigurationSetting"
+            "settingInstance" = @{
+                "@odata.type" = "#microsoft.graph.deviceManagementConfigurationSimpleSettingCollectionInstance"
+                "settingDefinitionId" = "device_vendor_msft_policy_config_userrights_logonasbatchjob"
+                "simpleSettingCollectionValue" = @(
+                    @{
+                        "@odata.type" = "#microsoft.graph.deviceManagementConfigurationStringSettingValue"
+                        "value" = "Administrators"
+                    }
+                )
+            }
+        },
+
+        # 89.34 (L1) Ensure 'Shut Down The System' is set to 'Administrators, Users'
         @{
             "@odata.type" = "#microsoft.graph.deviceManagementConfigurationSetting"
             "settingInstance" = @{
