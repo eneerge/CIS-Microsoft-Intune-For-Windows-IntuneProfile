@@ -169,6 +169,15 @@ $params = @{
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/EnableExtendedBooksTelemetry"
         "value" = 0
     },
+    @{
+        # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-webthreatdefense#automaticdatacollection
+        "@odata.type" = "#microsoft.graph.omaSettingInteger"
+        "displayName" = "AutomaticDataCollection - Submit additional info when detecting suspicious website"
+        "description" = "When Enhanced Phishing protection detects enter information on a suspicious website, additional information such as content, sounds, and application memory are sent to Microsoft so research can be conducted to see if it's actually malicious."
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/EnableExtendedBooksTelemetry"
+        "value" = 0            # 1 = enabled | 0 = disabled
+    },
+    
     @{ # This configuration is only valid for Windows Insider and is not currently applicable to production builds of Windows 11
         # https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-windowsai#disableaidataanalysis
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
