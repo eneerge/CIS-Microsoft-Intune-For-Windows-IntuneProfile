@@ -174,7 +174,7 @@ $params = @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
         "displayName" = "AutomaticDataCollection - Submit additional info when detecting suspicious website"
         "description" = "When Enhanced Phishing protection detects enter information on a suspicious website, additional information such as content, sounds, and application memory are sent to Microsoft so research can be conducted to see if it's actually malicious."
-        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Browser/EnableExtendedBooksTelemetry"
+        "omaUri" = "./Device/Vendor/MSFT/Policy/Config/WebThreatDefense/AutomaticDataCollection"
         "value" = 0            # 1 = enabled | 0 = disabled
     },
     
