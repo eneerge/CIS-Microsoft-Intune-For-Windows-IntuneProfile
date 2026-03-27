@@ -236,7 +236,7 @@ $params = @{
         "displayName" = "4.6.11.1 (L1) Ensure 'Hardened UNC Paths' is set to 'Enabled, with `"Require Mutual Authentication`" and `"Require Integrity`" set for all NETLOGON and SYSVOL shares'"
         "description" = "Implemented"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/Connectivity/HardenedUNCPaths"
-        "value" = "<enabled/><data id=`"Pol_HardenedPaths`" value=`"\\*\NETLOGON$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1$([char]0xF000)\\*\SYSVOL$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1`"/>"
+        "value" = "<enabled/><data id=`"Pol_HardenedPaths`" value=`"\\*\NETLOGON$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1$([char]0xF000)\\*\SYSVOL$([char]0xF000)RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1`"/>"
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingString"
@@ -1428,7 +1428,7 @@ $params = @{
         "description" = "Must be set to apply CIS requirements 26.2, 26.3, 26.8"
         "omaUri" = "./Device/Vendor/MSFT/Policy/Config/DeviceLock/DevicePasswordEnabled"
         "value" = 0
-        #"value" = 1 # CIS recommendation for v4.0.0, but if this value is 1, that means it is disabled. Microsoft naming is great.
+        #"value" = 1 # CIS recommendation for v4.0.0, but if this value is 1, that means it is disabled.
     },
     @{
         "@odata.type" = "#microsoft.graph.omaSettingInteger"
