@@ -908,7 +908,7 @@ $params = @{
           "@odata.type" = "#microsoft.graph.omaSettingString"
           "displayName" = "4.11.36.4.3.5 (L2) Ensure 'Restrict clipboard transfer from server to client' is set to 'Enabled: Disable clipboard transfers from server to client'"
           "description" = "Implemented"
-          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/ADMX_TerminalServer/TS_CLIENT_CLIPBOARD"
+          "omaUri" = "./Device/Vendor/MSFT/Policy/Config/RemoteDesktopServices/LimitServerToClientClipboardRedirection"
           "value" = "<enabled/>`n<data id=`"TS_SC_CLIPBOARD_RESTRICTION_Text`" value=`"0`"/>"
     },
     @{
