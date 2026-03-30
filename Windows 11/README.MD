@@ -29,7 +29,9 @@ The following configuration scripts have been created:
 - Violates CIS 26.7 and 45.9. This sets the screen timeout to never. This is mainly for devices that should usually never lock (kiosks, teleprompters, presentation devices, etc). This is the counterpart to the "Lock after 10min" configuration.
 
 ### CIS Baseline Microsoft Intune for Windows 11 v4.0.0 (Services Configuration).ps1
-- CIS 81.1 to 81.42. This script configures all services specified in CIS benchmark to the recommended setting. When attempting to apply service configurations using OMAURI, an error is reported in the Event Viewer, despite following the Microsoft documents and the services are not configured properly. CIS has also noticed this issue and has documented the issue. This script works around that issue by running a Powershell script on the machine to configure each service. Some services have been left enabled due to issues discovered in the enviornment when disabled (IE: Print Spooler for printing, MDM services for syncing to Intune). See Audit 4 spreadsheet for details.
+- CIS 81.1 to 81.42. This script configures all services specified in CIS benchmark to the recommended setting. When attempting to apply service configurations using OMAURI, an error is reported in the Event Viewer, despite following the Microsoft documents and the services are not configured properly. CIS has also noticed this issue and has documented the issue. This script works around that issue by running a Powershell script on the machine to configure each service. 
+
+Some services have been left enabled due to issues discovered in the environment when disabled (IE: Print Spooler for printing, MDM services for syncing to Intune). See Audit 4 spreadsheet for details.
 
 - Do NOT run this script to install. This script should be uploaded into your "Scripts and Remediation" section under "Platform Scripts" and should run in the System context and you should disable signature checking since it's not a signed script.
 
